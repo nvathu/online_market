@@ -2,31 +2,31 @@
 
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="text-center p-3">
-        <p-floatLabel class="text-center">
+      
             <input pInputText  formControlName="email" placeholder="Email" id="email" type="email"/>
-        </p-floatLabel>
-        <div *ngIf="loginForm.get('email')?.dirty && loginForm.get('email')?.invalid" class="lower-opacity">
-            <small *ngIf="loginForm.get('email')?.errors?.['email']">
+        
+        <div *ngIf="email!.dirty && email!.invalid" class="lower-opacity">
+            <small *ngIf="email!.errors?.['email']">
                 Sorry, you must enter a valid email address!
             </small>
-            <small *ngIf="loginForm.get('email')?.errors?.['required']">
+            <small *ngIf="email!.errors?.['required']">
                 Sorry, you must enter your email address!
             </small>
         </div>
     </div>
 
     
-    
 
-    <div class="font-bold text-center p-3">
-        <p-floatLabel class="text-center">
+
+    <div class="text-center p-3">
+       
             <input pInputText formControlName="password" placeholder="Password" id="password" type="password" />
-        </p-floatLabel> 
-        <div *ngIf="loginForm.get('password')?.dirty && loginForm.get('password')?.invalid" class="lower-opacity">
-            <small *ngIf="loginForm.get('password')?.errors?.['required']">
+ 
+        <div *ngIf="password!.dirty && password!.invalid" class="lower-opacity" >
+            <small *ngIf="password!.errors?.['required']">
                 Sorry, you must enter your password!
             </small>
-            <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+            <small *ngIf="password!.errors?.['minlength']">
                 Password must be at least 8 characters long!
             </small>
         </div>
@@ -34,7 +34,7 @@
     </div>
 
     <div class="font-bold text-center p-3">
-    <button pButton pRipple type="submit" label="Log-in" id="login-button" style="background-color: #30a73f; color: white;"> </button>
+    <button pButton pRipple type="submit" label="Log-in" id="login-button" style="background-color: #30a73f; color: white;" ></button>
     </div>
     
     
