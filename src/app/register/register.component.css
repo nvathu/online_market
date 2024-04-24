@@ -1,0 +1,7 @@
+.field input:first-child {
+    margin-right: 20px; /* Ändere den Wert nach Bedarf */
+}
+
+.field input:last-child {
+    margin-left: 20px; /* Ändere den Wert nach Bedarf */
+}
