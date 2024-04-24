@@ -2,10 +2,11 @@
 
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="text-center p-3">
-      
-            <input pInputText  formControlName="email" placeholder="Email" id="email" type="email"/>
-        
-        <div *ngIf="email!.dirty && email!.invalid" class="lower-opacity">
+            <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
+            <input pInputText  formControlName="email" id="email" type="email"/>
+            <label for="email" class="text-center" >Email</label>
+            </p-floatLabel>
+        <div *ngIf="email!.touched && email!.invalid" class="lower-opacity">
             <small *ngIf="email!.errors?.['email']">
                 Sorry, you must enter a valid email address!
             </small>
@@ -22,7 +23,7 @@
        
             <input pInputText formControlName="password" placeholder="Password" id="password" type="password" />
  
-        <div *ngIf="password!.dirty && password!.invalid" class="lower-opacity" >
+        <div *ngIf="password!.touched && password!.invalid" class="lower-opacity" >
             <small *ngIf="password!.errors?.['required']">
                 Sorry, you must enter your password!
             </small>

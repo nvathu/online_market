@@ -1,1 +1,91 @@
-<p>Register page placeholder</p>
+<p class="text-center p-3">Fields marked * are required</p>
+<div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <div class="text-center p-3">
+            <label for="gender">Gender or Salutation:</label>
+            <input type="radio" id="mr" name="gender" value="Mr.">
+            <label for="mr">Mr.</label>
+            <input type="radio" id="mrs" name="gender" value="Mrs.">
+            <label for="mrs">Mrs.</label>
+            <input type="radio" id="other" name="gender" value="Other">
+            <label for="mrs">Other</label>
+        </div>
+
+     
+                <div class="text-center p-3">
+                    <input pInputText type="text" placeholder="* First Name" id="firstName" name="firstName" required class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                </div>
+
+                <div class="text-center p-3">
+                    <input pInputText type="text" placeholder="* Last Name" id="lastName" name="lastName" required class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                </div>
+       
+        
+        
+        <div class="text-center p-3">
+            <input pInputText type="email" placeholder="* Email Address" id="email" name="email" required>
+        </div>
+        <div class="text-center p-3">
+            <input pInputText type="password" placeholder="* Password" id="password" name="password" required>
+        </div>
+
+
+
+
+
+
+        <div class="formgrid grid">
+            <div class="field col">
+               
+                <input id="firstname2" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            </div>
+            <div class="field col">
+                
+                <input placeholder="hi" id="lastname2" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            </div>
+        </div>
+    
+
+
+
+
+
+
+
+
+
+        <div class="text-center p-3">
+            <label for="dob">Birthdate</label>
+            <input pInputText type="date" placeholder="Birthdate" id="dob" name="dob">
+        </div>
+        <div class="text-center p-3">
+            <input pInputText type="text" placeholder="* Street" id="street" name="street" required>
+        </div>
+        <div class="text-center p-3">
+            <input pInputText type="text" placeholder="* Street Number" id="streetNumber" name="streetNumber" required>
+        </div>
+        <div class="text-center p-3">
+            <input pInputText type="text" placeholder="* Postal Code" id="postalCode" name="postalCode" required>
+        </div>
+        <div class="text-center p-3">
+            <input pInputText type="text" placeholder="* City" id="city" name="city" required>
+        </div>
+        <div class="text-center p-3">
+            <label for="country">Country:</label>
+            <select id="country" name="country" required>
+                <option value="" disabled selected>Select your country</option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="UK">UK</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+
+
+        <div class="font-bold text-center p-3">
+            <button pButton pRipple type="submit" label="Log-in" id="login-button"
+                style="background-color: #30a73f; color: white;"></button>
+        </div>
+    </form>
+</div>
