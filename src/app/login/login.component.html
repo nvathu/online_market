@@ -20,9 +20,10 @@
 
 
     <div class="text-center p-3">
-       
-            <input pInputText formControlName="password" placeholder="Password" id="password" type="password" />
- 
+        <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
+            <input pInputText formControlName="password" id="password" type="password" />
+            <label for="password" class="text-center" >Password</label>
+        </p-floatLabel>
         <div *ngIf="password!.touched && password!.invalid" class="lower-opacity" >
             <small *ngIf="password!.errors?.['required']">
                 Sorry, you must enter your password!

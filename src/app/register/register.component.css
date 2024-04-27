@@ -1,7 +1,20 @@
-.field input:first-child {
-    margin-right: 20px; /* Ändere den Wert nach Bedarf */
+.lower-opacity {
+    opacity: 0.7; /* Adjust the opacity value as needed */
+    font-size: 0.9em;
 }
 
-.field input:last-child {
-    margin-left: 20px; /* Ändere den Wert nach Bedarf */
+.input-field {
+    width: 80px; /* Ändere die Breite nach Bedarf */
 }
+
+
+.input-container {
+    display: flex;
+    align-items: right;
+   margin-right: 10px;
+}
+
+.special-input {
+    margin-left: 15px; /* Ändere den Abstand nach Bedarf */
+}
+
