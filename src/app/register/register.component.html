@@ -49,8 +49,8 @@
     
 
         <div class="text-center p-3">
-            <label for="dob">Birthdate</label>
-            <input pInputText type="date" placeholder="Birthdate" id="dob" name="dob">
+            <label for="dob"><b>Birthdate</b></label><br>
+            <p-calendar  type="date" placeholder="* Birthdate" dateFormat="dd.mm.yy" iconDisplay="input" showIcon="true" ></p-calendar>
         </div>
 
 
@@ -85,13 +85,20 @@
 
         <div class="text-center p-3">
             <label for="country">Country:</label>
+            <p-dropdown  placeholder="* Country" 
+                [options] = "countries"
+                optionLabel ="name"
+            >
+            </p-dropdown>
+            
+            <!-- <label for="country">Country:</label>
             <select id="country" name="country" required>
                 <option value="" disabled selected>Select your country</option>
                 <option value="USA">USA</option>
                 <option value="Canada">Canada</option>
                 <option value="UK">UK</option>
-                <!-- Add more options as needed -->
-            </select>
+                
+            </select> -->
         </div>
 
 
