@@ -74,8 +74,7 @@
 
 
         <div class="text-center p-3">
-            <label for="dob">Birthdate</label>
-            <input pInputText type="date" placeholder="Birthdate" id="dob" name="dob">
+            <p-calendar  type="date" placeholder="* Birthdate" dateFormat="dd.mm.yy" iconDisplay="input" showIcon="true" ></p-calendar>
         </div>
 
 
@@ -126,15 +125,17 @@
 
 
 
+        
+    
+           
+        <div class="font-bold  p-3">Country</div>
         <div class="text-center p-3">
-            <label for="country">Country:</label>
-            <select id="country" name="country" required>
-                <option value="" disabled selected>Select your country</option>
-                <option value="USA">USA</option>
-                <option value="Canada">Canada</option>
-                <option value="UK">UK</option>
-                <!-- Add more options as needed -->
-            </select>
+            <p-dropdown  placeholder="* Country" 
+                [options] = "countries"
+                optionLabel ="name"
+            >
+            </p-dropdown>
+ 
         </div>
 
         <div class=" lower-opacity p-3">Your address will be used as the default shipping address.</div>
