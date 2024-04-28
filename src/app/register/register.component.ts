@@ -20,7 +20,7 @@ import { NgForm } from '@angular/forms';
 export class RegisterComponent {
 
   countries = [{name: "USA"}, {name:"New Zealand"},{name: "Germany"},{name: "Vietnam"}];
-
+  showEmailHint: boolean = true;
   
 
   registerForm = new FormGroup({
@@ -36,6 +36,22 @@ export class RegisterComponent {
     
   });
 
+  get email(){
+    return this.registerForm.get('email');
+}
+get password(){
+  return this.registerForm.get('password');
+}
+
+/*
+checkForOtherError() {
+  // Logik, um nach anderen Fehlern zu suchen
+  // Wenn ein anderer Fehler auftritt, setze showEmailHint auf false
+  if () {
+      this.showEmailHint = false;
+  }
+}
+ */
 
   onSubmit() {
     if (this.registerForm.invalid) {
