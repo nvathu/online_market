@@ -1,67 +1,77 @@
-
 <div style="display: flex; justify-content: center; align-items: center;">
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <p class="lower-opacity p-3">Fields marked * are required</p>
         <div class="font-bold  p-3"> Name</div>
         <div class="p-3">
-            
-            <input type="radio" id="mr" name="gender" value="Mr."  style="font-size: 16px; transform: scale(1.5);  margin-right: 15px;">
-            <label for="mr"  style="font-size: 16px;  margin-right: 15px;">Mr.</label>
-            <input type="radio" id="mrs" name="gender" value="Mrs."  style="font-size: 16px; transform: scale(1.5);  margin-right: 15px;">
-            <label for="mrs"  style="font-size: 16px;  margin-right: 15px;">Mrs.</label>
-            <input type="radio" id="other" name="gender" value="Other"  style="font-size: 16px; transform: scale(1.5);  margin-right: 20px;">
-            <input pInputText type="text" placeholder="Other" id="other" name="other" style="font-size: 16px; width: 250px;  margin-right: 15px;" required>
+
+            <input type="radio" id="mr" name="gender" value="Mr."
+                style="font-size: 16px; transform: scale(1.5);  margin-right: 15px;">
+            <label for="mr" style="font-size: 16px;  margin-right: 15px;">Mr.</label>
+            <input type="radio" id="mrs" name="gender" value="Mrs."
+                style="font-size: 16px; transform: scale(1.5);  margin-right: 15px;">
+            <label for="mrs" style="font-size: 16px;  margin-right: 15px;">Mrs.</label>
+            <input type="radio" id="other" name="gender" value="Other"
+                style="font-size: 16px; transform: scale(1.5);  margin-right: 20px;">
+            <input pInputText type="text" placeholder="Other" id="other" name="other"
+                style="font-size: 16px; width: 250px;  margin-right: 15px;" required>
         </div>
 
-       
-     
+
+
+
         <div class="formgrid grid text-center p-3" style="display: flex; flex-direction: row;">
             <div class="field col" style="display: flex;">
                 <div class="input-container">
-                <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
-                    <input pInputText type="text" id="firstName" name="firstName" class="mr-2" required>
-                    <label for="firstName" class="text-center">*First Name</label>
-                </p-floatLabel>
-            </div>
-            <div class="input-container">
-                <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
-                    <input pInputText type="text" id="lastName" name="lastName" class="ml-2" required>
-                    <label for="lastName" class="text-center">*Last Name</label>
-                </p-floatLabel>
-            </div>
+                    <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
+                        <input pInputText type="text" id="firstName" name="firstName" class="mr-2" required>
+                        <label for="firstName" class="text-center">*First Name</label>
+                    </p-floatLabel>
+                </div>
+                <div class="input-container">
+                    <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
+                        <input pInputText type="text" id="lastName" name="lastName" class="ml-2" required>
+                        <label for="lastName" class="text-center">*Last Name</label>
+                    </p-floatLabel>
+                </div>
             </div>
         </div>
-        
-        
-         
-        
+
+
+
+
         <div class="formgrid grid text-center p-3" style="display: flex; flex-direction: row;">
             <div class="field col" style="display: flex;">
                 <div class="input-container">
-                <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
-                    <input pInputText type="email" id="email" name="email" class="mr-2" required>
-                    <label for="email" class="text-center">* Email Address</label>
-                </p-floatLabel>
-            </div>
-            <div class="input-container">
-                <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
-                    <input pInputText type="password" id="password" name="password" class="ml-2" required>
-                    <label for="password" class="text-center">* Password</label>
-                </p-floatLabel>
-            </div>
+                    <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
+                        <input pInputText type="email" id="email" name="email" class="mr-2" required>
+                        <label for="email" class="text-center">* Email Address</label>
+                    </p-floatLabel>
+                </div>
+                
+                <div class="input-container">
+                    <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
+                        <input pInputText type="password" id="password" name="password" class="ml-2" required>
+                        <label for="password" class="text-center">* Password</label>
+                    </p-floatLabel>
+                </div>
+                <div class="lower-opacity">
+                    <small>
+                        You will need your email to log in to the store
+                    </small>
+                </div>
             </div>
         </div>
-        
-        
-        
-     
+
+
+
+
 
 
 
 
 
         <div class="font-bold  p-3"> Birthdate</div>
-    
+
 
         <div class="text-center p-3">
             <label for="dob">Birthdate</label>
@@ -72,48 +82,49 @@
 
 
         <div class="font-bold  p-3">Address</div>
-        
-            
-            <div class="formgrid grid text-center p-3" style="display: flex; flex-direction: row;">
-                <div class="field col" style="display: flex;">
-                    <div class="input-container">
+
+
+        <div class="formgrid grid text-center p-3" style="display: flex; flex-direction: row;">
+            <div class="field col" style="display: flex;">
+                <div class="input-container">
                     <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
-                        <input pInputText type="text" id="street" name="street"  required>
+                        <input pInputText type="text" id="street" name="street" required>
                         <label for="street" class="text-center">* Street</label>
                     </p-floatLabel>
                 </div>
                 <div class="input-container special-input">
                     <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
-                        <input pInputText type="text" id="streetNumber" name="streetNumber" class="input-field" required>
+                        <input pInputText type="text" id="streetNumber" name="streetNumber" class="input-field"
+                            required>
                         <label for="streetNumber" class="text-center">* No.</label>
                     </p-floatLabel>
                 </div>
-                </div>
             </div>
-            
+        </div>
 
-      
-       
+
+
+
 
         <div class="formgrid grid text-center p-3" style="display: flex; flex-direction: row;">
             <div class="field col" style="display: flex;">
                 <div class="input-container">
-                <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
-                    <input pInputText type="text" id="postalCode" name="postalCode" class="mr-2" required>
-                    <label for="postalCode" class="text-center">* Postal Code</label>
-                </p-floatLabel>
-            </div>
+                    <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
+                        <input pInputText type="text" id="postalCode" name="postalCode" class="mr-2" required>
+                        <label for="postalCode" class="text-center">* Postal Code</label>
+                    </p-floatLabel>
+                </div>
                 <div class="input-container">
-                <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
-                    <input pInputText type="text" id="city" name="city" class="ml-2" required>
-                    <label for="city" class="text-center">* City</label>
-                </p-floatLabel>
-            </div>
+                    <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
+                        <input pInputText type="text" id="city" name="city" class="ml-2" required>
+                        <label for="city" class="text-center">* City</label>
+                    </p-floatLabel>
+                </div>
             </div>
         </div>
-        
-    
-           
+
+
+
 
         <div class="text-center p-3">
             <label for="country">Country:</label>
@@ -126,7 +137,7 @@
             </select>
         </div>
 
-       <div class=" lower-opacity p-3" >Your address will be used as the default shipping address.</div>
+        <div class=" lower-opacity p-3">Your address will be used as the default shipping address.</div>
         <div class="font-bold  p-3">
             <button pButton pRipple type="submit" label="Submit" id="register-button"
                 style="background-color: #30a73f; color: white;"></button>

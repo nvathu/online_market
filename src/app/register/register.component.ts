@@ -29,6 +29,7 @@ export class RegisterComponent {
         Validators.minLength(8),
     ])
   });
+
   
 
   onSubmit() {
