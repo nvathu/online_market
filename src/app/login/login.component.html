@@ -1,1 +1,48 @@
-<p>This will contain the login form. (Assignment 2)</p>
+<h2 class="text-center">Log in</h2>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+<!--Inputfield Emailaddress + Errormessage -->
+    <div class="input-container">
+        <div class="text-center p-3">
+            <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
+                <input pInputText formControlName="email" id="email" type="email" />
+                <label for="email" class="text-center">Email</label>
+                <div *ngIf="email!.touched && email!.invalid" class="error-message">
+                    <small *ngIf="email!.errors?.['email']">
+                        Sorry, you must enter a valid email address!
+                    </small>
+                    <small *ngIf="email!.errors?.['required']">
+                        Sorry, you must enter your email address!
+                    </small>
+                </div>
+            </p-floatLabel>
+        </div>
+    </div>
+
+<!--Inputfield Password + Errormessage -->
+    <div class="input-container">
+        <div class="text-center p-3">
+            <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
+                <input pInputText formControlName="password" id="password" type="password" />
+                <label for="password" class="text-center">Password</label>
+                <div *ngIf="password!.touched && password!.invalid" class="error-message">
+                    <small *ngIf="password!.errors?.['required']">
+                        Sorry, you must enter your password!
+                    </small>
+                    <small *ngIf="password!.errors?.['minlength']">
+                        Password must be at least 8 characters long!
+                    </small>
+                </div>
+            </p-floatLabel>
+        </div>
+    </div>
+
+    <!--Log in button-->
+    <div class="font-bold text-center p-4">
+        <button pButton pRipple type="submit" label="Log-in" id="login-button"
+            style="background-color: #30a73f; color: white;"></button>
+    </div>
+
+
+</form>

@@ -1,1 +1,220 @@
-<p>Register page placeholder</p>
+<div style="display: flex; justify-content: center; align-items: center;">
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <div class="font-bold text-center  p-3" style="font-size: 25px;"> Register</div>
+
+        <p class="lower-opacity-info p-3">Fields marked * are required</p>
+
+        <div class="font-bold  p-3"> Name</div>
+
+        <!--Buttons for gender-->
+        <div class="p-3">
+            <input type="radio" id="mr" name="gender" value="Mr."
+                style="font-size: 16px; transform: scale(1.5);  margin-right: 15px;">
+            <label for="mr" style="font-size: 16px;  margin-right: 15px;">Mr.</label>
+            <input type="radio" id="mrs" name="gender" value="Mrs."
+                style="font-size: 16px; transform: scale(1.5);  margin-right: 15px;">
+            <label for="mrs" style="font-size: 16px;  margin-right: 15px;">Mrs.</label>
+            <input type="radio" id="other" name="gender" value="Other"
+                style="font-size: 16px; transform: scale(1.5);  margin-right: 20px;">
+            <input pInputText type="text" placeholder="Other" id="other" name="other"
+                style="font-size: 16px; width: 250px;  margin-right: 15px;" required>
+        </div>
+
+
+        <!--Fields for First and Last Name + Errormessages-->
+        <div class="formgrid grid text-center p-3" style="display: flex; flex-direction: row;">
+            <div class="field col" style="display: flex;">
+                <div class="input-container">
+                    <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
+                        <input pInputText formControlName="firstName" type="text" id="firstName" name="firstName"
+                            class="mr-2" required>
+                        <label for="firstName" class="text-center">* First Name</label>
+                        <div *ngIf="firstName!.invalid && (firstName!.dirty || firstName!.touched)"
+                            class="error-message">
+                            <small *ngIf="firstName!.errors?.['required']">
+                                First Name is required
+                            </small>
+                        </div>
+                    </p-floatLabel>
+
+                </div>
+                <div class="input-container">
+                    <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
+                        <input pInputText formControlName="lastName" type="text" id="lastName" name="lastName"
+                            class="ml-2" required>
+                        <label for="lastName" class="text-center">* Last Name</label>
+                        <div *ngIf="lastName!.invalid && (lastName!.dirty || lastName!.touched)" class="error-message">
+                            <small *ngIf="lastName!.errors?.['required']">
+                                Last Name is required
+                            </small>
+                        </div>
+                    </p-floatLabel>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--Fields for email and password + Errormessages-->
+        <div class="formgrid grid text-center p-3" style="display: flex; flex-direction: row;">
+            <div class="field col" style="display: flex;">
+                <div class="input-container">
+                    <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
+                        <input pInputText formControlName="email" type="email" id="email" name="email" class="mr-2"
+                            required>
+                        <label for="email" class="text-center">* Email Address</label>
+                        <div class="lower-opacity" *ngIf="email!.untouched">You will need your email to log in to the
+                            store.</div>
+                        <div *ngIf="email!.touched && email!.invalid" class="error-message">
+                            <small *ngIf="email!.errors?.['email']">
+                                Sorry, you must enter a valid email address!
+                            </small>
+                            <small *ngIf="email!.errors?.['required']">
+                                Sorry, you must enter your email address!
+                            </small>
+                        </div>
+                    </p-floatLabel>
+
+
+                </div>
+
+                <div class="input-container">
+                    <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
+                        <input pInputText formControlName="password" type="password" id="password" name="password"
+                            class="ml-2" required>
+                        <label for="password" class="text-center">* Password</label>
+                        <div class="lower-opacity" *ngIf="password!.untouched">You will need your password to log in to
+                            the store.</div>
+                        <div *ngIf="password!.touched && password!.invalid" class="error-message">
+                            <small *ngIf="password!.errors?.['required']">
+                                Sorry, you must enter your password!
+                            </small>
+                            <small *ngIf="password!.errors?.['minlength']">
+                                Password must be at least 8 characters long!
+                            </small>
+                        </div>
+                    </p-floatLabel>
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <!--"Header" and Spacing-->
+        <div class="font-bold  p-3"></div>
+        <div class="font-bold  p-3"> Birthdate</div>
+
+        <!--Fields for birthdate + errormessages-->
+        <div class="form-container">
+            <div class="p-3">
+                <div class=" p-3" class="flex-container">
+                    <p-calendar formControlName="birthdate" type="date" placeholder="* Birthdate" dateFormat="dd.mm.yy"
+                        iconDisplay="input" [showIcon]="true"></p-calendar>
+                    <div *ngIf="birthdate!.invalid && (birthdate!.dirty || birthdate!.touched)" class="error-message">
+                        <small *ngIf="birthdate!.errors?.['required']">
+                            Birthdate is required and must be a valid date
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--"Header" and Spacing-->
+        <div class="font-bold  p-3"></div>
+        <div class="font-bold  p-3">Address</div>
+
+        <!--Fields for street and streetnumber + errormessages-->
+        <div class="formgrid grid text-center p-3" style="display: flex; flex-direction: row;">
+            <div class="field col" style="display: flex;">
+                <div class="input-container">
+                    <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
+                        <input pInputText formControlName="street" type="text" id="street" name="street" required>
+                        <label for="street" class="text-center">* Street</label>
+                        <div *ngIf="street!.invalid && (street!.dirty || street!.touched)" class="error-message">
+                            <small *ngIf="street!.errors?.['required']">
+                                Street is required
+                            </small>
+                        </div>
+                    </p-floatLabel>
+
+                </div>
+                <div class="input-container special-input">
+                    <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
+                        <input pInputText formControlName="streetNumber" type="text" id="streetNumber"
+                            name="streetNumber" class="input-field" required>
+                        <label for="streetNumber" class="text-center">* No.</label>
+                        <div *ngIf="streetNumber!.invalid && (streetNumber!.dirty || streetNumber!.touched)"
+                            class="error-message">
+                            <small *ngIf="streetNumber!.errors?.['required']">
+                                Must be a number
+                            </small>
+                        </div>
+                    </p-floatLabel>
+
+                </div>
+            </div>
+        </div>
+
+        <!--Fields for postalcode and city + errormessages-->
+        <div class="formgrid grid text-center p-3" style="display: flex; flex-direction: row;">
+            <div class="field col" style="display: flex;">
+                <div class="input-container">
+                    <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
+                        <input pInputText formControlName="postalCode" type="text" id="postalCode" name="postalCode"
+                            class="mr-2" required>
+                        <label for="postalCode" class="text-center">* Postal Code</label>
+                        <div *ngIf="postalCode!.invalid && (postalCode!.dirty || postalCode!.touched)"
+                            class="error-message">
+                            <small *ngIf="postalCode!.errors?.['required']">
+                                Postal Code must be a number
+                            </small>
+                        </div>
+                    </p-floatLabel>
+
+                </div>
+                <div class="input-container">
+                    <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
+                        <input pInputText formControlName="city" type="text" id="city" name="city" class="ml-2"
+                            required>
+                        <label for="city" class="text-center">* City</label>
+                        <div *ngIf="city!.invalid && (city!.dirty || city!.touched)" class="error-message">
+                            <small *ngIf="city!.errors?.['required']">
+                                City is required
+                            </small>
+                        </div>
+                    </p-floatLabel>
+
+                </div>
+            </div>
+        </div>
+
+        <!--Fields for country + errormessages-->
+        <div class="form-container">
+            <div class="p-3">
+                <div class=" p-3" class="flex-container">
+                    <p-dropdown formControlName="country" placeholder="* Country" [options]="countries"
+                        optionLabel="name">
+                    </p-dropdown>
+                    <div class="error-message" *ngIf="country!.invalid && (country!.dirty || country!.touched)">
+                        <small *ngIf="country!.errors?.['required']">
+                            Country is required
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Info-->
+        <div class="lower-opacity-info p-3">Your address will be used as the default shipping address.</div>
+
+        <!--Submit button-->
+        <div class="font-bold  p-3">
+            <button pButton pRipple type="submit" label="Submit" id="register-button"
+                style="background-color: #30a73f; color: white;"></button>
+        </div>
+    </form>
+</div>
