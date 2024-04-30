@@ -1,12 +1,15 @@
 <div style="display: flex; justify-content: center; align-items: center;">
 
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
         <div class="font-bold text-center  p-3" style="font-size: 25px;"> Register</div>
+
         <p class="lower-opacity-info p-3">Fields marked * are required</p>
 
         <div class="font-bold  p-3"> Name</div>
-        <div class="p-3">
 
+        <!--Buttons for gender-->
+        <div class="p-3">
             <input type="radio" id="mr" name="gender" value="Mr."
                 style="font-size: 16px; transform: scale(1.5);  margin-right: 15px;">
             <label for="mr" style="font-size: 16px;  margin-right: 15px;">Mr.</label>
@@ -20,8 +23,7 @@
         </div>
 
 
-
-
+        <!--Fields for First and Last Name + Errormessages-->
         <div class="formgrid grid text-center p-3" style="display: flex; flex-direction: row;">
             <div class="field col" style="display: flex;">
                 <div class="input-container">
@@ -56,7 +58,7 @@
 
 
 
-
+        <!--Fields for email and password + Errormessages-->
         <div class="formgrid grid text-center p-3" style="display: flex; flex-direction: row;">
             <div class="field col" style="display: flex;">
                 <div class="input-container">
@@ -102,11 +104,11 @@
             </div>
         </div>
 
-
+        <!--"Header" and Spacing-->
         <div class="font-bold  p-3"></div>
         <div class="font-bold  p-3"> Birthdate</div>
 
-
+        <!--Fields for birthdate + errormessages-->
         <div class="form-container">
             <div class="p-3">
                 <div class=" p-3" class="flex-container">
@@ -121,11 +123,11 @@
             </div>
         </div>
 
-
+        <!--"Header" and Spacing-->
         <div class="font-bold  p-3"></div>
         <div class="font-bold  p-3">Address</div>
 
-
+        <!--Fields for street and streetnumber + errormessages-->
         <div class="formgrid grid text-center p-3" style="display: flex; flex-direction: row;">
             <div class="field col" style="display: flex;">
                 <div class="input-container">
@@ -157,7 +159,7 @@
             </div>
         </div>
 
-
+        <!--Fields for postalcode and city + errormessages-->
         <div class="formgrid grid text-center p-3" style="display: flex; flex-direction: row;">
             <div class="field col" style="display: flex;">
                 <div class="input-container">
@@ -190,7 +192,7 @@
             </div>
         </div>
 
-
+        <!--Fields for country + errormessages-->
         <div class="form-container">
             <div class="p-3">
                 <div class=" p-3" class="flex-container">
@@ -206,7 +208,10 @@
             </div>
         </div>
 
+        <!--Info-->
         <div class="lower-opacity-info p-3">Your address will be used as the default shipping address.</div>
+
+        <!--Submit button-->
         <div class="font-bold  p-3">
             <button pButton pRipple type="submit" label="Submit" id="register-button"
                 style="background-color: #30a73f; color: white;"></button>
