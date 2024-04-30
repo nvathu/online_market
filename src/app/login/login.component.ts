@@ -15,7 +15,7 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 })
 export class LoginComponent {
 
-
+    /*From Group with Validators*/
     loginForm = new FormGroup({
         email: new FormControl('', [
             Validators.required,
@@ -27,7 +27,7 @@ export class LoginComponent {
         ])
     });
 
-
+    /*Getter for Validators*/
     get email() {
         return this.loginForm.get('email');
     }
@@ -36,6 +36,7 @@ export class LoginComponent {
         return this.loginForm.get('password');
     }
 
+    /*Submit function, not fully implemented yet*/
     onSubmit() {
         if (this.loginForm.invalid) {
 

@@ -1,30 +1,32 @@
 .lower-opacity {
-    opacity: 0.7; /* Adjust the opacity value as needed */
+    opacity: 0.7; 
     font-size: 0.9em;
     position: absolute;
     top: 100%;
     left: 0;
-    transform: translateY(5px); /* Justiere den Abstand nach Bedarf */
+    transform: translateY(5px); 
     width: 100%;
-}
-.lower-opacity-info {
-    opacity: 0.7; /* Adjust the opacity value as needed */
-    font-size: 0.9em;
-}
-.error-message {
-    color: red;
-    opacity: 0.7; /* Adjust the opacity value as needed */
-    font-size: 0.9em;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    transform: translateY(5px); /* Justiere den Abstand nach Bedarf */
-    width: 100%;
-}
-.input-field {
-    width: 80px; /* Ändere die Breite nach Bedarf */
 }
 
+.lower-opacity-info {
+    opacity: 0.7; 
+    font-size: 0.9em;
+}
+
+.error-message {
+    color: red;
+    opacity: 0.7; 
+    font-size: 0.9em;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transform: translateY(5px); 
+    width: 100%;
+}
+
+.input-field {
+    width: 80px; 
+}
 
 .input-container {
     display: flex;
@@ -34,17 +36,17 @@
 }
 
 .special-input {
-    margin-left: 15px; /* Ändere den Abstand nach Bedarf */
+    margin-left: 15px; 
 }
 
 .form-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Ausrichtung der Elemente am Anfang der Achse */
+    align-items: flex-start; 
 }
 
 .flex-container {
     display: flex;
     flex-direction: column;
-    position: relative; /* Positionierung des Containers relativ für die absolute Positionierung der Fehlermeldung */
+    position: relative;
 }

@@ -18,11 +18,12 @@ import { DropdownModule } from 'primeng/dropdown';
 })
 
 export class RegisterComponent {
-
+  /*Countries for country selection */
   countries = [{ name: "USA" }, { name: "New Zealand" }, { name: "Germany" }, { name: "Vietnam" }];
+
   showEmailHint: boolean = true;
 
-
+  /*Registerform with validators */
   registerForm = new FormGroup({
     firstName: new FormControl('', [
       Validators.required,
@@ -61,15 +62,11 @@ export class RegisterComponent {
   });
 
 
-
+  /*Getter methods */
   get firstName() { return this.registerForm.get('firstName'); }
   get lastName() { return this.registerForm.get('lastName'); }
-  get email() {
-    return this.registerForm.get('email');
-  }
-  get password() {
-    return this.registerForm.get('password');
-  }
+  get email() { return this.registerForm.get('email'); }
+  get password() { return this.registerForm.get('password'); }
   get birthdate() { return this.registerForm.get('birthdate'); }
   get street() { return this.registerForm.get('street'); }
   get streetNumber() { return this.registerForm.get('streetNumber'); }
@@ -77,19 +74,11 @@ export class RegisterComponent {
   get city() { return this.registerForm.get('city'); }
   get country() { return this.registerForm.get('country'); }
 
-  /*
-  checkForOtherError() {
-    // Logik, um nach anderen Fehlern zu suchen
-    // Wenn ein anderer Fehler auftritt, setze showEmailHint auf false
-    if () {
-        this.showEmailHint = false;
-    }
-  }
-   */
 
+  /*Submit function, not fully implemented yet*/
   onSubmit() {
     if (this.registerForm.invalid) {
-     
+
     }
 
   }

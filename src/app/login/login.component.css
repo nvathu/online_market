@@ -1,4 +1,6 @@
-.lower-opacity {
+
+.error-message {
+    color: red;
     opacity: 0.7; /* Adjust the opacity value as needed */
     font-size: 0.9em;
     position: absolute;
