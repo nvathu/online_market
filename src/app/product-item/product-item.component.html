@@ -1,15 +1,16 @@
 
-<div class="card">
-  <img class="card-img-top" [src]="getProductImage(product.id)" alt="{{ product.name }}">
-  <div class="card-body">
-    <p class="card-text">{{ product.brand }}</p>
-    <h5 class="card-title">{{ product.name }}</h5>
-    <div class ="card-price" >{{ product.price }} $</div>
-    
+
+
+
+  <div class="grid-container">
+    <div *ngFor="let product of products" class="grid-item">
+      <div class="card">
+        <img class="card-img-top" [src]="getProductImage(product.id)" alt="{{ product.name }}">
+        <div class="card-body">
+          <p class="card-text">{{ product.brand }}</p>
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text card-price">{{ product.price }} €</p>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-
-
-  
-
-  

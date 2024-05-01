@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Product } from '../services/product';
+import { ProductService } from '../services/product.service';
+import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-product-grid',
@@ -7,6 +10,17 @@ import { Component } from '@angular/core';
   templateUrl: './product-grid.component.html',
   styleUrl: './product-grid.component.css'
 })
-export class ProductGridComponent {
 
+export class ProductGridComponent {
+  @Input() product!: Product;
+
+  constructor(private productService: ProductService) { }
+
+  getProductImage(id: string): string {
+    return this.productService.getProductImage(id);
+  }
 }
+
+
+
+
