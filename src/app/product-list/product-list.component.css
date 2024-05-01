@@ -1,0 +1,10 @@
+.product-list {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Grid of Equals */
+    grid-gap: 20px;
+  }
