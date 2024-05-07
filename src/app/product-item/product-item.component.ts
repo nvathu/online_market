@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../services/product';
 import { ProductService } from '../services/product.service';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,6 +10,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './product-item.component.html',
   styleUrl: './product-item.component.css'
 })
+/*constructor and method for pictures */
 export class ProductItemComponent {
   @Input() products!: Product[];
 

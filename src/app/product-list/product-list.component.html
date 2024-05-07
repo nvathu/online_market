@@ -1,29 +1,30 @@
 
+<!--Buttons for view change-->
 <div class="view-toggle">
   <button class="toggle-button" (click)="toggleListView()">
-    <span class="material-icons">view_list</span> 
+    <span class="material-icons">view_list</span>
   </button>
   <button class="toggle-button" (click)="toggleGridView()">
-    <span class="material-icons">grid_view</span> 
+    <span class="material-icons">grid_view</span>
   </button>
 </div>
 
-
-  <div *ngIf="listView" class="product-list">
-    <div class="horizontal-cards">
-      <div *ngFor="let product of products" class="horizontal-card">
-        <div class="card-img">
-          <img [src]="getProductImage(product.id)" alt="{{ product.name }}">
-        </div>
-        <div class="card-details">
-          <p class="card-text">{{ product.brand }}</p>
-          <h5 class="card-title">{{ product.name }}</h5>
-          <p class="card-text card-price"><span>{{ product.price }} €</span></p>
-        </div>
+<!--List with cards layout-->
+<div *ngIf="listView" class="product-list">
+  <div class="horizontal-cards">
+    <div *ngFor="let product of products" class="horizontal-card">
+      <div class="card-img">
+        <img [src]="getProductImage(product.id)" alt="{{ product.name }}">
+      </div>
+      <div class="card-details">
+        <p class="card-text" style=" margin-bottom: 7px;">{{ product.brand }}</p>
+        <h5 class="card-title" style=" margin-top: 14px;">{{ product.name }}</h5>
+        <p class="card-text card-price" style=" margin-top: 10px;"><span>{{ product.price }} €</span></p>
       </div>
     </div>
   </div>
-  
-  
+</div>
 
-  <app-product-item *ngIf="!listView" [products]="products"></app-product-item>
+
+<!--If not listview switch to gridview in product-item component-->
+<app-product-item *ngIf="!listView" [products]="products"></app-product-item>
