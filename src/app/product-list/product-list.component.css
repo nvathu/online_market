@@ -1,0 +1,80 @@
+.product-list {
+  display: flex;
+  justify-content: center;
+}
+
+.horizontal-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.horizontal-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.horizontal-card .card-img {
+  width: 100px;
+}
+
+.horizontal-card .card-img img {
+  width: 100%;
+  height: auto;
+}
+
+.horizontal-card .card-details {
+  flex-grow: 1;
+  padding: 10px;
+  padding-bottom: 5px;
+}
+
+.horizontal-card .card-title {
+  font-size: 16px;
+  margin-bottom: 3px;
+}
+
+.horizontal-card .card-text {
+  font-size: 14px;
+}
+
+.horizontal-card .card-text.card-price {
+  display: inline-block;
+  background-color: lightskyblue;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid rgb(0, 132, 255);
+  font-weight: bold;
+}
+
+.view-toggle {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+
+.toggle-button {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.toggle-button:hover {
+  background-color: #5096fff1;
+}
+
+.toggle-button:focus {
+  outline: none;
+}
+
+.material-icons {
+  font-size: 24px;
+}
