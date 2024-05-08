@@ -5,13 +5,14 @@ import { Product } from '../services/product';
 import { ProductItemComponent } from '../product-item/product-item.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 /*Imported MattButton Module and added therefor angular/material to the package.jason.
   Maybe there is the need to run npm install again*/
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, ProductItemComponent, MatIconModule, MatButtonModule],
+  imports: [CommonModule, ProductItemComponent, MatIconModule, MatButtonModule, MatProgressSpinnerModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })

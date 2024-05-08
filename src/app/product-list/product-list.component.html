@@ -32,4 +32,9 @@
 
 <!--If not listview switch to gridview in product-item component-->
 <app-product-item *ngIf="!listView" [products]="products"></app-product-item>
-<button *ngIf="!loading" pButton class="load-more-button p-4" (click)="loadMoreProducts()">Load More</button>
+
+
+
+<div class="load-more-container" *ngIf="!loading" style="margin-bottom: 40px;">
+  <button class="load-more-button" (click)="loadMoreProducts()">Mehr laden</button>
+</div>
