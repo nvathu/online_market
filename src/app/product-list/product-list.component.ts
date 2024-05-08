@@ -21,21 +21,32 @@ export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
   listView: boolean = true;
+  loading: boolean = false;
 
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.loadProducts();
+    this.loadInitialProducts();
   }
 
-  loadProducts(): void {
-    this.productService.getAllProductMetadata().subscribe((products: Product[]) => {
-      this.products = products;
-    });
+  loadInitialProducts(): void {
+    this.loading = true;
+    this.productService.getInitialProductMetadata(10) // Load initial 10 products
+      .subscribe((products: Product[]) => {
+        this.products = products;
+        this.loading = false;
+      });
   }
-
   getProductImage(id: string): string {
     return this.productService.getProductImage(id);
+  }
+  loadMoreProducts(): void {
+    this.loading = true;
+    this.productService.getNextProductMetadata(10) // Load next 10 products
+      .subscribe((nextProducts: Product[]) => {
+        this.products = [...this.products, ...nextProducts]; // Append new products to existing ones
+        this.loading = false;
+      });
   }
 
   toggleListView(): void {
@@ -45,4 +56,5 @@ export class ProductListComponent implements OnInit {
   toggleGridView(): void {
     this.listView = false;
   }
+
 }
