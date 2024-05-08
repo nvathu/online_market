@@ -53,7 +53,7 @@ export class ProductListComponent implements OnInit {
         this.loading = false;
       });
   }
-
+/*
   @HostListener('window:scroll', ['$event'])
   onScroll(event: any) {
     const pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.clientHeight;
@@ -65,7 +65,7 @@ export class ProductListComponent implements OnInit {
       this.loadMoreProducts();
     }
   }
-
+*/
   toggleListView(): void {
     this.listView = true;
    

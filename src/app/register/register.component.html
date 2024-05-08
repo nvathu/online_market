@@ -66,9 +66,9 @@
                         <input pInputText formControlName="email" type="email" id="email" name="email" class="mr-2"
                             required>
                         <label for="email" class="text-center">* Email Address</label>
-                        <div class="lower-opacity" *ngIf="email!.untouched">You will need your email to log in to the
+                        <div class="lower-opacity">You will need your email to log in to the
                             store.</div>
-                        <div *ngIf="email!.touched && email!.invalid" class="error-message">
+                        <div *ngIf="email!.touched && email!.invalid" class="error-message" style=" margin-top: 35px;">
                             <small *ngIf="email!.errors?.['email']">
                                 Sorry, you must enter a valid email address!
                             </small>
@@ -81,14 +81,14 @@
 
                 </div>
 
-                <div class="input-container">
+                <div class="input-container" >
                     <p-floatLabel style="display: flex; align-items: center; justify-content: center;">
                         <input pInputText formControlName="password" type="password" id="password" name="password"
                             class="ml-2" required>
                         <label for="password" class="text-center">* Password</label>
-                        <div class="lower-opacity" *ngIf="password!.untouched">You will need your password to log in to
+                        <div class="lower-opacity">You will need your password to log in to
                             the store.</div>
-                        <div *ngIf="password!.touched && password!.invalid" class="error-message">
+                        <div *ngIf="password!.touched && password!.invalid" class="error-message"  style=" margin-top: 35px;">
                             <small *ngIf="password!.errors?.['required']">
                                 Sorry, you must enter your password!
                             </small>
@@ -150,7 +150,10 @@
                         <div *ngIf="streetNumber!.invalid && (streetNumber!.dirty || streetNumber!.touched)"
                             class="error-message">
                             <small *ngIf="streetNumber!.errors?.['required']">
-                                Must be a number
+                                Is required.
+                             </small>
+                             <small *ngIf="streetNumber!.errors?.['pattern'] && streetNumber!.errors?.['required']" >
+                                Streetnumber must contain numbers.
                             </small>
                         </div>
                     </p-floatLabel>
@@ -170,6 +173,9 @@
                         <div *ngIf="postalCode!.invalid && (postalCode!.dirty || postalCode!.touched)"
                             class="error-message">
                             <small *ngIf="postalCode!.errors?.['required']">
+                               Is required.
+                            </small>
+                            <small *ngIf="postalCode!.errors?.['pattern'] && postalCode!.errors?.['required']" >
                                 Postal Code must be a number
                             </small>
                         </div>
