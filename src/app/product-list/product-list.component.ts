@@ -1,4 +1,4 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../services/product.service';
 import { Product } from '../services/product';
@@ -23,6 +23,7 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
   listView: boolean = true;
   loading: boolean = false;
+ 
 
   constructor(private productService: ProductService) { }
 
@@ -38,10 +39,13 @@ export class ProductListComponent implements OnInit {
         this.loading = false;
       });
   }
+
   getProductImage(id: string): string {
     return this.productService.getProductImage(id);
   }
+
   loadMoreProducts(): void {
+  
     this.loading = true;
     this.productService.getNextProductMetadata(10) // Load next 10 products
       .subscribe((nextProducts: Product[]) => {
@@ -50,12 +54,26 @@ export class ProductListComponent implements OnInit {
       });
   }
 
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: any) {
+    const pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.clientHeight;
+    const max = document.documentElement.scrollHeight;
+
+    // Detect if user has scrolled to the bottom of the page
+    if (pos === max) {
+      // Load more products
+      this.loadMoreProducts();
+    }
+  }
+
   toggleListView(): void {
     this.listView = true;
+   
   }
 
   toggleGridView(): void {
     this.listView = false;
+ 
   }
 
 }

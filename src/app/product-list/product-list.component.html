@@ -8,7 +8,7 @@
 </div>
 
 
-<div *ngIf="listView" class="product-list">
+<div *ngIf="listView" class="product-list" (scroll)="onScroll($event)">
   
   <div *ngIf="products.length > 0" class="horizontal-cards">
     <div *ngFor="let product of products" class="horizontal-card">
@@ -22,10 +22,6 @@
       </div>
     </div>
   </div>
-
-  <div *ngIf="loading" class="loading-indicator">
-  </div>
-
   
   
 </div>
@@ -34,7 +30,8 @@
 <app-product-item *ngIf="!listView" [products]="products"></app-product-item>
 
 
-
+<!--If not listview switch to gridview in product-item component
 <div class="load-more-container" *ngIf="!loading" style="margin-bottom: 40px;">
   <button class="load-more-button" (click)="loadMoreProducts()">Mehr laden</button>
 </div>
+-->
