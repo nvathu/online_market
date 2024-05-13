@@ -34,5 +34,6 @@ muss wieder hier eingefügt werden sonst funktioniert infinit scroling nicht-->
 
 
 <div class="load-more-container" *ngIf="!loading" style="margin-bottom: 40px;">
-  <button class="load-more-button" (click)="loadMoreProducts()">Mehr laden</button>
+  <button *ngIf="!isButtonHidden" class="load-more-button" (click)="loadMoreProducts()">Mehr laden</button>
+  <p-progressSpinner *ngIf="isButtonHidden" ariaLabel="loading" > loadMoreProducts() </p-progressSpinner> 
 </div>

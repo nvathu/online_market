@@ -6,13 +6,14 @@ import { ProductItemComponent } from '../product-item/product-item.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {ProgressSpinner, ProgressSpinnerModule} from 'primeng/progressspinner'
 /*Imported MattButton Module and added therefor angular/material to the package.jason.
   Maybe there is the need to run npm install again*/
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, ProductItemComponent, MatIconModule, MatButtonModule, MatProgressSpinnerModule],
+  imports: [CommonModule, ProductItemComponent, MatIconModule, MatButtonModule, MatProgressSpinnerModule, ProgressSpinnerModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
@@ -23,6 +24,7 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
   listView: boolean = true;
   loading: boolean = false;
+  isButtonHidden: boolean = false;
  
 
   constructor(private productService: ProductService) { }
@@ -45,7 +47,7 @@ export class ProductListComponent implements OnInit {
   }
 
   loadMoreProducts(): void {
-  
+    this.isButtonHidden = true;
     this.loading = true;
     this.productService.getNextProductMetadata(10) // Load next 10 products
       .subscribe((nextProducts: Product[]) => {
