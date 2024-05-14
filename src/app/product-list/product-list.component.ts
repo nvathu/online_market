@@ -6,7 +6,7 @@ import { ProductItemComponent } from '../product-item/product-item.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {ProgressSpinner, ProgressSpinnerModule} from 'primeng/progressspinner'
+import {ProgressSpinnerModule} from 'primeng/progressspinner'
 /*Imported MattButton Module and added therefor angular/material to the package.jason.
   Maybe there is the need to run npm install again*/
 
@@ -15,7 +15,7 @@ import {ProgressSpinner, ProgressSpinnerModule} from 'primeng/progressspinner'
   standalone: true,
   imports: [CommonModule, ProductItemComponent, MatIconModule, MatButtonModule, MatProgressSpinnerModule, ProgressSpinnerModule],
   templateUrl: './product-list.component.html',
-  styleUrl: './product-list.component.css'
+  styleUrl: './product-list.component.css',
 })
 
 /*constructor and method for pictures as well as method for products and Metadata and listView/gridview switch methods */
@@ -35,7 +35,7 @@ export class ProductListComponent implements OnInit {
 
   loadInitialProducts(): void {
     this.loading = true;
-    this.productService.getInitialProductMetadata(10) // Load initial 10 products
+    this.productService.getInitialProductMetadata(25) // Load initial 25 products
       .subscribe((products: Product[]) => {
         this.products = products;
         this.loading = false;
@@ -49,25 +49,27 @@ export class ProductListComponent implements OnInit {
 
   loadMoreProducts(): void {
     this.loading = true;
-    this.productService.getNextProductMetadata(10) // Load next 10 products
+    this.productService.getNextProductMetadata(25) // Load next 25 products
       .subscribe((nextProducts: Product[]) => {
         this.products = [...this.products, ...nextProducts]; // Append new products to existing ones
         this.loading = false;
       });
   }
-/*
+
+  //Method for infinit scrolling
+  /*
   @HostListener('window:scroll', ['$event'])
   onScroll(event: any) {
     const pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.clientHeight;
     const max = document.documentElement.scrollHeight;
-
+  
     // Detect if user has scrolled to the bottom of the page
     if (pos === max) {
       // Load more products
       this.loadMoreProducts();
     }
-  }
-*/
+  }*/
+
   toggleListView(): void {
     this.listView = true;
    

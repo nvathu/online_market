@@ -10,7 +10,7 @@
 <!--
 (scroll)="onScroll($event)"
 muss wieder hier eingefügt werden sonst funktioniert infinit scroling nicht-->
-<div *ngIf="listView" class="product-list" >
+<div *ngIf="listView" class="product-list">
   
   <div *ngIf="products.length > 0" class="horizontal-cards">
     <div *ngFor="let product of products" class="horizontal-card">
@@ -24,7 +24,7 @@ muss wieder hier eingefügt werden sonst funktioniert infinit scroling nicht-->
       </div>
     </div>
   </div>
-  
+ 
   
 </div>
 
@@ -33,7 +33,9 @@ muss wieder hier eingefügt werden sonst funktioniert infinit scroling nicht-->
 
 
 
-<div class="load-more-container"  style="margin-bottom: 40px;">
-  <button *ngIf="!loading && initialLoadComplete" class="load-more-button" (click)="loadMoreProducts()">Mehr laden</button>
-  <p-progressSpinner *ngIf="loading || !initialLoadComplete "></p-progressSpinner>
+<div class="load-more-container" >
+
+ <button *ngIf="!loading && initialLoadComplete" class="load-more-button" (click)="loadMoreProducts()">Load more products</button>
+  
+  <div class="custom-spinner"*ngIf="loading || !initialLoadComplete"> </div>
 </div>
