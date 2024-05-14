@@ -51,7 +51,7 @@ export class ProductListComponent implements OnInit {
     this.loading = true;
     this.productService.getNextProductMetadata(25) // Load next 25 products
       .subscribe((nextProducts: Product[]) => {
-        this.products = [...this.products, ...nextProducts]; // Append new products to existing ones
+        this.products = [...this.products, ...nextProducts]; 
         this.loading = false;
       });
   }
