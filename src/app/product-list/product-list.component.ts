@@ -24,7 +24,7 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
   listView: boolean = true;
   loading: boolean = false;
-  isButtonHidden: boolean = false;
+  initialLoadComplete: boolean = false;
  
 
   constructor(private productService: ProductService) { }
@@ -39,6 +39,7 @@ export class ProductListComponent implements OnInit {
       .subscribe((products: Product[]) => {
         this.products = products;
         this.loading = false;
+        this.initialLoadComplete = true;
       });
   }
 
@@ -47,7 +48,6 @@ export class ProductListComponent implements OnInit {
   }
 
   loadMoreProducts(): void {
-    this.isButtonHidden = true;
     this.loading = true;
     this.productService.getNextProductMetadata(10) // Load next 10 products
       .subscribe((nextProducts: Product[]) => {
