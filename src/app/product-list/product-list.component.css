@@ -78,3 +78,40 @@
 .material-icons {
   font-size: 24px;
 }
+
+.load-more-button {
+  background-color: #5096ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: auto;
+}
+
+.load-more-button:hover {
+  background-color: #407bd4;
+}
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px; 
+  margin-bottom: 60px; 
+}
+
+/* loading spinner */
+.custom-spinner {
+  width: 6rem;
+  height: 6rem;
+  border: 0.3rem solid transparent;
+  border-top-color:  #5096ff;
+  border-radius: 50%;
+  animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

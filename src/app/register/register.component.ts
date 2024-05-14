@@ -48,10 +48,12 @@ export class RegisterComponent {
     streetNumber: new FormControl('', [
       Validators.required,
       Validators.pattern(/\d+/),
+      Validators.pattern(/^[0-9]*$/),
     ]),
     postalCode: new FormControl('', [
       Validators.required,
       Validators.pattern(/\d+/),
+      Validators.pattern(/^[0-9]*$/),
     ]),
     city: new FormControl('', [
       Validators.required,

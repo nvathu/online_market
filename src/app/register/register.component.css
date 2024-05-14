@@ -50,3 +50,21 @@
     flex-direction: column;
     position: relative;
 }
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-container p-floatLabel {
+    width: 100%; /* Ensure the label spans the full width */
+    margin-bottom: 10px; /* Adjust as needed */
+}
+
+.input-container .hint {
+    font-size: 14px; /* Adjust the font size as needed */
+    margin-top: 5px; /* Adjust the spacing between the label and hint */
+    color: #666; /* Adjust the color of the hint text */
+}
