@@ -17,6 +17,13 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.horizontal-card:hover {
+  box-shadow: 0 .0625rem 20px 0 rgba(0,0,0,.05);
+  transform: translateY(-.0625rem);
+  z-index: 1
 }
 
 .horizontal-card .card-img {

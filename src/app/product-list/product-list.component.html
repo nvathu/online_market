@@ -13,19 +13,21 @@ muss wieder hier eingefügt werden sonst funktioniert infinit scroling nicht-->
 <div *ngIf="listView" class="product-list">
   
   <div *ngIf="products.length > 0" class="horizontal-cards">
-    <div *ngFor="let product of products" class="horizontal-card">
-      <div class="card-img">
-        <img [src]="getProductImage(product.id)" alt="{{ product.name }}">
-      </div>
-      <div class="card-details">
-        <p class="card-text" style="margin-bottom: 7px;">{{ product.brand }}</p>
-        <h5 class="card-title" style="margin-top: 14px;">{{ product.name }}</h5>
-        <p class="card-text card-price" style="margin-top: 10px;"><span>{{ product.price }} €</span></p>
-      </div>
+    <div *ngFor="let product of products" class="horizontal-card" [routerLink]="['/products',product.id]" >
+        <div class="card-img">
+          <img [src]="getProductImage(product.id)" alt="{{ product.name }}">
+        </div>
+        <div class="card-details">
+          <p class="card-text" style="margin-bottom: 7px;">{{ product.brand }}</p>
+          <h5 class="card-title" style="margin-top: 14px;">{{ product.name }}</h5>
+          <p class="card-text card-price" style="margin-top: 10px;"><span>{{ product.price }} €</span></p>
+        </div>
+      
     </div>
   </div>
- 
-  
+
+
+
 </div>
 
 <!--If not listview switch to gridview in product-item component-->
@@ -33,9 +35,10 @@ muss wieder hier eingefügt werden sonst funktioniert infinit scroling nicht-->
 
 
 
-<div class="load-more-container" >
+<div class="load-more-container">
 
- <button *ngIf="!loading && initialLoadComplete" class="load-more-button" (click)="loadMoreProducts()">Load more products</button>
-  
-  <div class="custom-spinner"*ngIf="loading || !initialLoadComplete"> </div>
+  <button *ngIf="!loading && initialLoadComplete" class="load-more-button" (click)="loadMoreProducts()">Load more
+    products</button>
+
+  <div class="custom-spinner" *ngIf="loading || !initialLoadComplete"> </div>
 </div>
