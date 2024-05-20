@@ -1,19 +1,49 @@
-<div 
-  *ngIf="product"
-
->
-
-    <div>
-      <img [src]="getProductImage(product.id)" alt="{{ product.name }}">
+<div *ngIf="product" class="product-detail-container" style="margin-top: 100px;">
+  <div class="product-image-container">
+    <p-image 
+    [src]="productImage" 
+    alt="{{ product.name }}" 
+    width="300" 
+    [preview]="true" 
+    class="product-image">
+  </p-image>
+  </div>  
+  <div class="product-info-container">
+    <div class="product-header">
+      <p class="product-brand">{{ product.brand }}</p>
+      <h1 class="product-title">{{ product.name }}</h1>
     </div>
-    <div>
-      <p>Brand: {{ product.brand }}</p>
-      <h1>{{ product.name }}</h1>
+    <div class="product-description">
+      <p>This is the description</p>
+    </div>
+    
+    <div class="product-colors" style="margin-bottom: 25px; margin-top:20px">
+      <label id="color-label">Colors:</label>
+      <div class="color-variants" style="margin-top: 5px;" role="radiogroup" aria-labelledby="color-label">
+        <div 
+          *ngFor="let color of product.colors" 
+          [style.background]="color.color_hex"
+          (click)="onColorChange(color)"
+          [title]="color.color_name"
+          class="color-box"
+          [class.selected]="selectedColor?.color_id === color.color_id"
+          role="radio"
+          [attr.aria-checked]="selectedColor?.color_id === color.color_id"
+          tabindex="0"
+        ></div>
+      </div>
+    </div>
 
-      <p>Price: {{ product.price }} €</p>
-      <!-- <p>{{color}}</p>  -->
-      <p>Size</p>
-      <p>{{ product.gender }} and {{product.category}}</p>
-    </div> 
-
+    <div class="product-sizes" style="margin-top: 20px; margin-bottom: 25px">
+      <label for="size-select" style="margin-right: 10px;">Size:</label>
+      <select id="size-select" [(ngModel)]="selectedSize">
+        <option *ngFor="let size of product.sizes" [value]="size">{{ size }}</option>
+      </select>
+    </div>
+    <p class="product-price">{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</p>
+   
+  </div>
 </div>
+
+
+
