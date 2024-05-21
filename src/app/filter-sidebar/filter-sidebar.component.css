@@ -1,0 +1,27 @@
+
+
+.filter-group {
+  margin-bottom: 20px;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.filter-sidebar {
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+}
+
+.filter-group {
+  margin-right: 20px; 
+}
+
+
+
+.price-label {
+  font-size: 14px;
+  margin-top: 5px; 
+}
