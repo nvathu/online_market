@@ -3,6 +3,13 @@
   justify-content: center;
 }
 
+
+.filter-sidebar {
+  width: 250px; 
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-right: 1px solid #ddd;
+}
 .horizontal-cards {
   display: flex;
   flex-wrap: wrap;
