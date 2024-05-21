@@ -1,9 +1,13 @@
-import { Routes } from '@angular/router';
+import { Routes} from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 export const routes: Routes = [
+    { 
+        path: '', 
+        component: ProductListComponent, },
     {
         path: 'login',
         component: LoginComponent,
@@ -13,8 +17,14 @@ export const routes: Routes = [
         component: RegisterComponent,
     },
     {
-        path: '**',
-        redirectTo: ''
+        path: 'products/:id',
+        component:ProductDetailComponent,   
     },
-    { path: '', component: ProductListComponent }
+    {
+        path: '**',
+        redirectTo: '',
+    }
+    
+    
 ];
+

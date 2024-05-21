@@ -3,17 +3,20 @@ import { CommonModule } from '@angular/common';
 import { ProductService } from '../services/product.service';
 import { Product } from '../services/product';
 import { ProductItemComponent } from '../product-item/product-item.component';
+import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {ProgressSpinnerModule} from 'primeng/progressspinner'
+import { ActivatedRoute,Params,RouterLink } from '@angular/router';
+
 /*Imported MattButton Module and added therefor angular/material to the package.jason.
   Maybe there is the need to run npm install again*/
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, ProductItemComponent, MatIconModule, MatButtonModule, MatProgressSpinnerModule, ProgressSpinnerModule],
+  imports: [CommonModule, ProductItemComponent, MatIconModule, MatButtonModule, MatProgressSpinnerModule, ProgressSpinnerModule,RouterLink,ProductDetailComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })
@@ -21,16 +24,25 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner'
 /*constructor and method for pictures as well as method for products and Metadata and listView/gridview switch methods */
 export class ProductListComponent implements OnInit {
 
-  products: Product[] = [];
+  // products: Product[] = [];
+  products! : Product[];
   listView: boolean = true;
   loading: boolean = false;
   initialLoadComplete: boolean = false;
+  id :string ='';
+  color: string;
  
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private route : ActivatedRoute) { 
+    this.route.params.subscribe((params: Params) => {
+      this.id = params['id'];
+    });
+    this.color = this.route.snapshot.queryParams['color'];
+  }
 
   ngOnInit(): void {
     this.loadInitialProducts();
+    
   }
 
   loadInitialProducts(): void {
@@ -55,6 +67,9 @@ export class ProductListComponent implements OnInit {
         this.loading = false;
       });
   }
+
+  
+
 
   //Method for infinit scrolling
   /*
