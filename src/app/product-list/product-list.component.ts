@@ -10,7 +10,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {ProgressSpinnerModule} from 'primeng/progressspinner'
 import { ActivatedRoute,Params,RouterLink } from '@angular/router';
 import { FilterSidebarComponent } from "../filter-sidebar/filter-sidebar.component";
-
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { InputGroupModule } from 'primeng/inputgroup';
 
 
 @Component({
@@ -18,7 +21,9 @@ import { FilterSidebarComponent } from "../filter-sidebar/filter-sidebar.compone
     standalone: true,
     templateUrl: './product-list.component.html',
     styleUrl: './product-list.component.css',
-    imports: [CommonModule, ProductItemComponent, MatIconModule, MatButtonModule, MatProgressSpinnerModule, ProgressSpinnerModule, RouterLink, ProductDetailComponent, FilterSidebarComponent]
+    imports: [CommonModule, ProductItemComponent, MatIconModule, MatButtonModule, MatProgressSpinnerModule, ProgressSpinnerModule, RouterLink, ProductDetailComponent, FilterSidebarComponent,
+      FormsModule, InputTextModule, ButtonModule, InputGroupModule
+    ]
 })
 
 
@@ -32,15 +37,14 @@ export class ProductListComponent implements OnInit {
   color: string;
   noProductsMessage: string = "";
   colors: string[] = [];
+  searchTerm: string = '';
   
   constructor(private productService: ProductService, private route: ActivatedRoute) {
-    this.colors = [];
-    this.color = ''; 
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
     });
-    this.color = this.route.snapshot.queryParams['color'];
-}
+    this.color = this.route.snapshot.queryParams['color'] || '';
+  }
 
   ngOnInit(): void {
     this.loadInitialProducts();
@@ -48,13 +52,12 @@ export class ProductListComponent implements OnInit {
 
   loadInitialProducts(): void {
     this.loading = true;
-    this.productService.getInitialProductMetadata(25) // Load initial 25 products
-      .subscribe((products: Product[]) => {
-        this.products = products;
-        this.filteredProducts = products;
-        this.loading = false;
-        this.initialLoadComplete = true;
-      });
+    this.productService.getInitialProductMetadata(25).subscribe((products: Product[]) => {
+      this.products = products;
+      this.filteredProducts = products;
+      this.loading = false;
+      this.initialLoadComplete = true;
+    });
   }
 
   getProductImage(id: string): string {
@@ -63,12 +66,11 @@ export class ProductListComponent implements OnInit {
 
   loadMoreProducts(): void {
     this.loading = true;
-    this.productService.getNextProductMetadata(25) // Load next 25 products
-      .subscribe((nextProducts: Product[]) => {
-        this.products = [...this.products, ...nextProducts];
-        this.applyFilters();
-        this.loading = false;
-      });
+    this.productService.getNextProductMetadata(25).subscribe((nextProducts: Product[]) => {
+      this.products = [...this.products, ...nextProducts];
+      this.applyFilters();
+      this.loading = false;
+    });
   }
 
   toggleListView(): void {
@@ -84,7 +86,7 @@ export class ProductListComponent implements OnInit {
   }
 
   applyFilters(filters?: any): void {
-    if (filters) {
+    if (filters || this.searchTerm) {
         this.filteredProducts = this.products.filter(product => {
             let matches = true;
             if (filters.brands && filters.brands.length > 0) {
@@ -96,6 +98,9 @@ export class ProductListComponent implements OnInit {
             if (matches && filters.priceRange) {
                 matches = product.price >= filters.priceRange[0] && product.price <= filters.priceRange[1];
             }
+            if (matches && this.searchTerm) {
+              matches = product.name.toLowerCase().includes(this.searchTerm.toLowerCase());
+            }
             return matches;
         });
     } else {
@@ -104,14 +109,14 @@ export class ProductListComponent implements OnInit {
 
     // Check if there are any products after filtering
     if (this.filteredProducts.length === 0) {
-        this.noProductsMessage = "No products match your search/filter criteria.";
+      this.noProductsMessage = "No products match your search/filter criteria.";
     } else {
-        this.noProductsMessage = "";
+      this.noProductsMessage = "";
     }
 }
 
-  onSearch(searchTerm: string): void {
-    this.applyFilters({ search: searchTerm });
-  }
+onSearch(filters: any): void {
+  this.applyFilters(filters);
+}
 
 }
