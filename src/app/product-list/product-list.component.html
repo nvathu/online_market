@@ -6,7 +6,10 @@
     <span class="material-icons">grid_view</span>
   </button>
 </div>
-
+<p-inputGroup>
+  <input type="text" pInputText placeholder="Search products..." (keydown.enter)="onSearch($event)" [(ngModel)]="searchTerm">
+  <button pButton type="button" icon="pi pi-search" (click)="onSearch($event)"></button>
+</p-inputGroup>
 <div class="content">
   <app-filter-sidebar (filtersChanged)="onFiltersChanged($event)"></app-filter-sidebar>
 
@@ -25,18 +28,20 @@
     </div>
   </div>
 
-  <!-- If not listview switch to gridview in product-item component -->
-  <app-product-item *ngIf="!listView" [products]="filteredProducts"></app-product-item>
+  
 </div>
+
+<!-- If not listview switch to gridview in product-item component -->
+<app-product-item *ngIf="!listView" [products]="filteredProducts"></app-product-item>
 
 <div *ngIf="noProductsMessage" class="no-products-message">
   {{ noProductsMessage }}
 </div>
 
-<div class="load-more-container" *ngIf="!loading && initialLoadComplete && filteredProducts.length > 0">
-  <button class="load-more-button" (click)="loadMoreProducts()">Load more products</button>
-</div>
+<div class="load-more-container">
 
-<div class="custom-spinner" *ngIf="loading || !initialLoadComplete">
-  <p-progressSpinner></p-progressSpinner>
+  <button *ngIf="!loading && initialLoadComplete" class="load-more-button" (click)="loadMoreProducts()">Load more
+    products</button>
+
+  <div class="custom-spinner" *ngIf="loading || !initialLoadComplete"> </div>
 </div>
