@@ -16,34 +16,46 @@ import { ButtonModule } from 'primeng/button';
 import { InputGroupModule } from 'primeng/inputgroup';
 
 
+import { HttpClientModule } from '@angular/common/http';
+
+
+
+
+import { ToolbarModule } from 'primeng/toolbar';
+
+import { SplitButtonModule } from 'primeng/splitbutton';
+
 @Component({
     selector: 'app-product-list',
     standalone: true,
     templateUrl: './product-list.component.html',
     styleUrl: './product-list.component.css',
     imports: [CommonModule, ProductItemComponent, MatIconModule, MatButtonModule, MatProgressSpinnerModule, ProgressSpinnerModule, RouterLink, ProductDetailComponent, FilterSidebarComponent,
-      FormsModule, InputTextModule, ButtonModule, InputGroupModule
+      FormsModule, InputTextModule, ButtonModule, InputGroupModule, HttpClientModule, ToolbarModule, SplitButtonModule
     ]
 })
 
 
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
-  filteredProducts: Product[] = [];
+  allProducts: Product[] = [];
+  searchText: string = '';
+  searchResults: Product[] = [];
   listView: boolean = true;
   loading: boolean = false;
   initialLoadComplete: boolean = false;
-  id: string = '';
-  color: string;
-  noProductsMessage: string = "";
-  colors: string[] = [];
-  searchTerm: string = '';
-  
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
-    this.route.params.subscribe((params: Params) => {
-      this.id = params['id'];
-    });
-    this.color = this.route.snapshot.queryParams['color'] || '';
+  items: any[];
+  nextIndex: number = 0;
+
+  selectedBrands: string[] = [];
+  selectedColors: string[] = [];
+  selectedPriceRange: [number, number] = [0, 1000];  // Beispielwerte für den Preisbereich
+
+  constructor(private productService: ProductService) {
+    this.items = [
+      { label: 'Update', icon: 'pi pi-refresh', command: () => this.updateProducts() },
+      { label: 'Delete', icon: 'pi pi-times', command: () => this.deleteProducts() }
+    ];
   }
 
   ngOnInit(): void {
@@ -52,25 +64,53 @@ export class ProductListComponent implements OnInit {
 
   loadInitialProducts(): void {
     this.loading = true;
-    this.productService.getInitialProductMetadata(25).subscribe((products: Product[]) => {
-      this.products = products;
-      this.filteredProducts = products;
+    this.productService.getAllProductMetadata().subscribe(products => {
+      this.allProducts = products;
+      this.searchProducts();
       this.loading = false;
       this.initialLoadComplete = true;
     });
   }
 
-  getProductImage(id: string): string {
-    return this.productService.getProductImage(id);
+  searchProducts(): void {
+    this.searchResults = this.allProducts.filter(product => this.filterProducts(product));
+    this.nextIndex = 0;
+    this.products = this.searchResults.slice(this.nextIndex, this.nextIndex + 25);
+    this.nextIndex += 25;
+  }
+
+  filterProducts(product: Product): boolean {
+    const searchTextLower = this.searchText.toLowerCase();
+    const matchesSearchText = product.name.toLowerCase().includes(searchTextLower) ||
+           product.brand.toLowerCase().includes(searchTextLower) ||
+           product.colors.some(color => color.color_name.toLowerCase().includes(searchTextLower)) ||
+           product.category.toLowerCase().includes(searchTextLower) ||
+           product.type.toLowerCase().includes(searchTextLower) ||
+           product.gender.toLowerCase().includes(searchTextLower);
+    
+    const matchesBrand = this.selectedBrands.length ? this.selectedBrands.includes(product.brand) : true;
+    const matchesColor = this.selectedColors.length ? product.colors.some(color => this.selectedColors.includes(color.color_name)) : true;
+    const matchesPrice = product.price >= this.selectedPriceRange[0] && product.price <= this.selectedPriceRange[1];
+    
+    return matchesSearchText && matchesBrand && matchesColor && matchesPrice;
+  }
+
+  onKeyPress(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      this.searchProducts();
+    }
   }
 
   loadMoreProducts(): void {
     this.loading = true;
-    this.productService.getNextProductMetadata(25).subscribe((nextProducts: Product[]) => {
-      this.products = [...this.products, ...nextProducts];
-      this.applyFilters();
-      this.loading = false;
-    });
+    const moreProducts = this.searchResults.slice(this.nextIndex, this.nextIndex + 25);
+    this.products = [...this.products, ...moreProducts];
+    this.nextIndex += 25;
+    this.loading = false;
+  }
+
+  getProductImage(id: string): string {
+    return this.productService.getProductImage(id);
   }
 
   toggleListView(): void {
@@ -81,42 +121,18 @@ export class ProductListComponent implements OnInit {
     this.listView = false;
   }
 
-  onFiltersChanged(filters: any): void {
-    this.applyFilters(filters);
+  updateProducts(): void {
+    // Logik zum Aktualisieren der Produkte
   }
 
-  applyFilters(filters?: any): void {
-    if (filters || this.searchTerm) {
-        this.filteredProducts = this.products.filter(product => {
-            let matches = true;
-            if (filters.brands && filters.brands.length > 0) {
-                matches = filters.brands.includes(product.brand);
-            }
-            if (matches && filters.colors && filters.colors.length > 0) {
-                matches = filters.colors.some((color: { color_id: string; color_name: string; color_hex: string; }) => product.colors.includes(color));
-            }
-            if (matches && filters.priceRange) {
-                matches = product.price >= filters.priceRange[0] && product.price <= filters.priceRange[1];
-            }
-            if (matches && this.searchTerm) {
-              matches = product.name.toLowerCase().includes(this.searchTerm.toLowerCase());
-            }
-            return matches;
-        });
-    } else {
-        this.filteredProducts = this.products;
-    }
+  deleteProducts(): void {
+    // Logik zum Löschen der Produkte
+  }
 
-    // Check if there are any products after filtering
-    if (this.filteredProducts.length === 0) {
-      this.noProductsMessage = "No products match your search/filter criteria.";
-    } else {
-      this.noProductsMessage = "";
-    }
-}
-
-onSearch(filters: any): void {
-  this.applyFilters(filters);
-}
-
+  onFiltersChanged(filters: {brands: string[], colors: string[], priceRange: [number, number]}): void {
+    this.selectedBrands = filters.brands;
+    this.selectedColors = filters.colors;
+    this.selectedPriceRange = filters.priceRange;
+    this.searchProducts();
+  }
 }

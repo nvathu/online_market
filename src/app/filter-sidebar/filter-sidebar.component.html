@@ -1,22 +1,16 @@
 <div class="filter-sidebar">
-    <div class="filter-group">
-      <label for="brandFilter">Brand</label>
-      <p-multiSelect [options]="brands" [(ngModel)]="selectedBrands" (onChange)="onFiltersChanged()"></p-multiSelect>
-    </div>
-  
-    <div class="filter-group">
-      <label for="colorFilter">Color</label>
-      <p-multiSelect [options]="colors" [(ngModel)]="selectedColors" (onChange)="onFiltersChanged()"></p-multiSelect>
-    </div>
-  
-    <div class="filter-group">
-        <label for="priceFilter">Price</label>
-        <p-slider [(ngModel)]="selectedPriceRange" [range]="true" [min]="0" [max]="500" (onChange)="onFiltersChanged()"
-          [style]="{ 'width': '200px', 'height': '0.4em' }"></p-slider>
-        <div class="price-label" >{{ selectedPriceRange[0] }}€ - {{ selectedPriceRange[1] }}€</div>
-      </div>
-      
-  
-  
-  
-  
+  <h3>Filters</h3>
+  <div>
+    <p>Brands</p>
+    <p-multiSelect [options]="brands" [(ngModel)]="selectedBrands" (onChange)="applyFilters()"></p-multiSelect>
+  </div>
+  <div>
+    <p>Colors</p>
+    <p-multiSelect [options]="colors" [(ngModel)]="selectedColors" (onChange)="applyFilters()"></p-multiSelect>
+  </div>
+  <div>
+    <p>Price Range</p>
+    <p-slider [(ngModel)]="selectedPriceRange" [min]="priceRange[0]" [max]="priceRange[1]" [range]="true" (onSlideEnd)="applyFilters()"></p-slider>
+    <div>{{ selectedPriceRange[0] }} € - {{ selectedPriceRange[1] }} €</div>
+  </div>
+</div>
