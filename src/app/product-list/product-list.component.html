@@ -1,21 +1,18 @@
-<div class="view-toggle">
-  <button class="toggle-button" (click)="toggleListView()">
-    <span class="material-icons">view_list</span>
-  </button>
-  <button class="toggle-button" (click)="toggleGridView()">
-    <span class="material-icons">grid_view</span>
-  </button>
-</div>
-<p-inputGroup>
-  <input type="text" pInputText placeholder="Search products..." (keydown.enter)="onSearch($event)" [(ngModel)]="searchTerm">
-  <button pButton type="button" icon="pi pi-search" (click)="onSearch($event)"></button>
-</p-inputGroup>
-<div class="content">
-  <app-filter-sidebar (filtersChanged)="onFiltersChanged($event)"></app-filter-sidebar>
+<p-toolbar>
+  <div class="p-toolbar-group-center">
+      <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input pInputText placeholder="Search" [(ngModel)]="searchText" (keypress)="onKeyPress($event)" />
+      </span>
+      <button pButton type="button" icon="pi pi-search" label="Search" (click)="searchProducts()"></button>
+  </div>
+</p-toolbar>
 
+<div class="container">
+  <app-filter-sidebar (filtersChanged)="onFiltersChanged($event)"></app-filter-sidebar>
   <div *ngIf="listView" class="product-list">
-    <div *ngIf="filteredProducts.length > 0" class="horizontal-cards">
-      <div *ngFor="let product of filteredProducts" class="horizontal-card" [routerLink]="['/products', product.id]">
+    <div *ngIf="products.length > 0" class="horizontal-cards">
+      <div *ngFor="let product of products" class="horizontal-card" [routerLink]="['/products', product.id]">
         <div class="card-img">
           <img [src]="getProductImage(product.id)" alt="{{ product.name }}">
         </div>
@@ -26,22 +23,14 @@
         </div>
       </div>
     </div>
+    <div *ngIf="products.length === 0 && searchText">
+      <p>Keine Produkte dieser Art gefunden.</p>
+    </div>
   </div>
-
-  
-</div>
-
-<!-- If not listview switch to gridview in product-item component -->
-<app-product-item *ngIf="!listView" [products]="filteredProducts"></app-product-item>
-
-<div *ngIf="noProductsMessage" class="no-products-message">
-  {{ noProductsMessage }}
+  <app-product-item *ngIf="!listView" [products]="products"></app-product-item>
 </div>
 
 <div class="load-more-container">
-
-  <button *ngIf="!loading && initialLoadComplete" class="load-more-button" (click)="loadMoreProducts()">Load more
-    products</button>
-
-  <div class="custom-spinner" *ngIf="loading || !initialLoadComplete"> </div>
+  <button *ngIf="!loading && initialLoadComplete && products.length > 0 && products.length < searchResults.length" class="load-more-button" (click)="loadMoreProducts()">Load more products</button>
+  <div class="custom-spinner" *ngIf="loading || !initialLoadComplete"></div>
 </div>
