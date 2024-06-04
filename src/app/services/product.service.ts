@@ -332,4 +332,7 @@ export class ProductService {
     getProductImage(id: string) {
         return `./assets/products/images/${id}.jpg`;
     }
+     getProductImageByColor(id: string, color_id: string): string {
+        return `./assets/products/images/${color_id}.jpg`;
+    }
 }
