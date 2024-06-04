@@ -18,7 +18,6 @@
     </div>
   </p-toolbar>
 </div>
-
 <div class="container">
   <app-filter-sidebar (filtersChanged)="onFiltersChanged($event)"></app-filter-sidebar>
   <div *ngIf="listView" class="product-list">
@@ -34,7 +33,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="products.length === 0 && searchText">
+    <div *ngIf="products.length === 0 && searchText" class="no-products-found">
       <p>Keine Produkte dieser Art gefunden.</p>
     </div>
   </div>
@@ -45,3 +44,4 @@
   <button *ngIf="!loading && initialLoadComplete && products.length > 0 && products.length < searchResults.length" class="load-more-button" (click)="loadMoreProducts()">Load more products</button>
   <div class="custom-spinner" *ngIf="loading || !initialLoadComplete"></div>
 </div>
+
