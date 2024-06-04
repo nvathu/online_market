@@ -1,9 +1,10 @@
-
 .filter-sidebar {
   width: 250px; 
   padding: 20px;
   background-color: #f8f8f8;
   border-right: 1px solid #ddd;
+  display: block;
+  position: relative;
 }
 
 .filter-sidebar h3 {
@@ -13,6 +14,17 @@
 .filter-sidebar h2 {
   margin-top: 0;
 }
+
 .filter-sidebar div {
   margin-bottom: 20px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.checkbox-container label {
+  margin-left: 10px;
 }

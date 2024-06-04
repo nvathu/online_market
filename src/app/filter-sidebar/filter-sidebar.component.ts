@@ -3,26 +3,27 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
 import { FormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
 import { SliderModule } from 'primeng/slider';
+import { MultiSelectModule } from 'primeng/multiselect';
 import { ProductService } from '../services/product.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
-    selector: 'app-filter-sidebar',
-    standalone: true,
-    imports: [CommonModule, FormsModule, CheckboxModule, SliderModule],
-    templateUrl: './filter-sidebar.component.html',
-    styleUrls: ['./filter-sidebar.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-filter-sidebar',
+  standalone: true,
+  imports: [CommonModule, FormsModule, CheckboxModule, SliderModule, MultiSelectModule, HttpClientModule],
+  templateUrl: './filter-sidebar.component.html',
+  styleUrls: ['./filter-sidebar.component.css'],
 })
-export class FilterSidebarComponent { 
+export class FilterSidebarComponent {
   brands: any[] = [];
   colors: any[] = [];
   priceRange: number[] = [0, 1000];  // Beispielwerte für den Preisbereich
   selectedBrands: string[] = [];
   selectedColors: string[] = [];
   rangeValues: number[] = [0, 1000]; // Array für den Slider
-  @Output() filtersChanged = new EventEmitter<{brands: string[], colors: string[], priceRange: [number, number]}>();
+  @Output() filtersChanged = new EventEmitter<{ brands: string[], colors: string[], priceRange: [number, number] }>();
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
     this.loadFilters();
@@ -46,13 +47,22 @@ export class FilterSidebarComponent {
     });
   }
 
-  toggleSelection(array: string[], value: string) {
+  toggleSelection(array: any[], value: string) {
+    console.log('Array before toggle:', array);
+    console.log('Value to toggle:', value);
+    if (!Array.isArray(array)) {
+      console.error('Provided value is not an array');
+      return;
+    }
+  
     const index = array.indexOf(value);
     if (index === -1) {
       array.push(value);
     } else {
       array.splice(index, 1);
     }
+    console.log('Array after toggle:', array);
     this.applyFilters();
   }
+  
 }
