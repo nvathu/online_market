@@ -1,16 +1,39 @@
 <div class="filter-sidebar">
-  <h3>Filters</h3>
-  <div>
-    <p>Brands</p>
-    <p-multiSelect [options]="brands" [(ngModel)]="selectedBrands" (onChange)="applyFilters()"></p-multiSelect>
+    <h3>Filters</h3>
+    <div>
+      <h2>Brands</h2>
+      <div *ngFor="let brand of brands">
+        <p-checkbox 
+          name="brands" 
+          [value]="brand.value" 
+          [(ngModel)]="selectedBrands" 
+          (onChange)="toggleSelection(selectedBrands, brand.value)">
+        </p-checkbox>
+        <label>{{ brand.label }}</label>
+      </div>
+    </div>
+    <div>
+      <h2>Colors</h2>
+      <div *ngFor="let color of colors">
+        <p-checkbox 
+          name="colors" 
+          [value]="color.value" 
+          [(ngModel)]="selectedColors" 
+          (onChange)="toggleSelection(selectedColors, color.value)">
+        </p-checkbox>
+        <label>{{ color.label }}</label>
+      </div>
+    </div>
+    <div>
+      <h2>Price Range</h2>
+      <p-slider 
+        [(ngModel)]="rangeValues" 
+        [min]="priceRange[0]" 
+        [max]="priceRange[1]" 
+        [range]="true" 
+        (onSlideEnd)="applyFilters()">
+      </p-slider>
+      <div>{{ rangeValues[0] }} € - {{ rangeValues[1] }} €</div>
+    </div>
   </div>
-  <div>
-    <p>Colors</p>
-    <p-multiSelect [options]="colors" [(ngModel)]="selectedColors" (onChange)="applyFilters()"></p-multiSelect>
-  </div>
-  <div>
-    <p>Price Range</p>
-    <p-slider [(ngModel)]="selectedPriceRange" [min]="priceRange[0]" [max]="priceRange[1]" [range]="true" (onSlideEnd)="applyFilters()"></p-slider>
-    <div>{{ selectedPriceRange[0] }} € - {{ selectedPriceRange[1] }} €</div>
-  </div>
-</div>
+  

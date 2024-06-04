@@ -1,8 +1,18 @@
-.product-list {
+.p-toolbar-group-center {
+  width: 100%;
   display: flex;
   justify-content: center;
 }
 
+.search-bar {
+  width: 50%;
+  max-width: 600px;
+}
+
+.product-list {
+  display: flex;
+  justify-content: center;
+}
 
 .filter-sidebar {
   width: 250px; 
@@ -10,6 +20,7 @@
   background-color: #f8f8f8;
   border-right: 1px solid #ddd;
 }
+
 .horizontal-cards {
   display: flex;
   flex-wrap: wrap;
@@ -27,10 +38,11 @@
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .horizontal-card:hover {
   box-shadow: 0 .0625rem 20px 0 rgba(0,0,0,.05);
   transform: translateY(-.0625rem);
-  z-index: 1
+  z-index: 1;
 }
 
 .horizontal-card .card-img {
@@ -108,19 +120,19 @@
 .load-more-button:hover {
   background-color: #407bd4;
 }
+
 .load-more-container {
   display: flex;
   justify-content: center;
-  margin-top: 40px; 
-  margin-bottom: 60px; 
+  margin-top: 40px;
+  margin-bottom: 60px;
 }
 
-/* loading spinner */
 .custom-spinner {
   width: 6rem;
   height: 6rem;
   border: 0.3rem solid transparent;
-  border-top-color:  #5096ff;
+  border-top-color: #5096ff;
   border-radius: 50%;
   animation: spin 0.5s linear infinite;
 }
@@ -152,13 +164,16 @@
 
 .search-bar button {
   padding: 10px;
+
   border: 1px solid #ccc;
   background-color: #007bff;
   color: white;
   cursor: pointer;
 }
 
-.p-toolbar-group-start, .p-toolbar-group-center, .p-toolbar-group-end {
+.p-toolbar-group-start,
+.p-toolbar-group-center,
+.p-toolbar-group-end {
   display: flex;
   align-items: center;
 }
