@@ -35,7 +35,7 @@
       </div>
     </div>
     <div *ngIf="products.length === 0 && searchText" class="no-products-found">
-      <p>Keine Produkte dieser Art gefunden.</p>
+      <h4 style="margin-top: 100px; margin-left: 300px;">Keine Produkte dieser Art gefunden.</h4>
     </div>
   </div>
   <app-product-item *ngIf="!listView" [products]="products"></app-product-item>
