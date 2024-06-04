@@ -1,11 +1,23 @@
-<p-toolbar>
-  <div class="p-toolbar-group-center">
-    <p-inputGroup class="search-bar">
-      <input type="text" pInputText placeholder="Search" [(ngModel)]="searchText" (keypress)="onKeyPress($event)" />
-      <button type="button" pButton icon="pi pi-search" class="p-button-warning" (click)="searchProducts()"></button>
-    </p-inputGroup>
-  </div>
-</p-toolbar>
+<div style="margin-bottom: 10px;">
+  <p-toolbar>
+    <div class="toolbar-wrapper" style="display: flex; align-items: center; justify-content: flex-end;"> 
+      <div class="p-toolbar-group-center" style="flex: 1; display: flex;">  
+         <p-inputGroup class="search-bar">
+          <input type="text" pInputText placeholder="Search" [(ngModel)]="searchText" (keypress)="onKeyPress($event)" style="flex: 1;" />  
+          <button type="button" pButton icon="pi pi-search" class="p-button-warning" (click)="searchProducts()"></button>
+        </p-inputGroup>
+      </div>
+      <div class="view-toggle">
+        <button class="toggle-button" (click)="toggleListView()">
+          <span class="material-icons">view_list</span>
+        </button>
+        <button class="toggle-button" (click)="toggleGridView()">
+          <span class="material-icons">grid_view</span>
+        </button>
+      </div>
+    </div>
+  </p-toolbar>
+</div>
 
 <div class="container">
   <app-filter-sidebar (filtersChanged)="onFiltersChanged($event)"></app-filter-sidebar>

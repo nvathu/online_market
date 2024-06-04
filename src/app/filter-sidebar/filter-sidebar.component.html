@@ -1,6 +1,6 @@
 <div class="filter-sidebar">
   <h2>Filters</h2>
-  <div>
+  <div style="margin-top: 30px;">
     <h3>Brands</h3>
     <div *ngFor="let brand of brands" class="field-checkbox">
       <p-checkbox 
@@ -15,7 +15,7 @@
       <label>{{ brand.label }}</label>
     </div>
   </div>
-  <div>
+  <div style="margin-top: 30px;">
     <h3>Colors</h3>
     <p-multiSelect 
       [options]="colors" 
@@ -25,7 +25,7 @@
       [filter]="true">
     </p-multiSelect>
   </div>
-  <div>
+  <div style="align-items: center; margin-top: 30px;">
     <h3>Price Range</h3>
     <p-slider 
       [(ngModel)]="rangeValues" 
@@ -34,6 +34,6 @@
       [range]="true" 
       (onSlideEnd)="applyFilters()">
     </p-slider>
-    <div>{{ rangeValues[0] }} € - {{ rangeValues[1] }} €</div>
+    <div style="margin-top: 15px;">{{ rangeValues[0] }} € - {{ rangeValues[1] }} €</div>
   </div>
 </div>
