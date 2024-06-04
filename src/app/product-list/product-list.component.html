@@ -1,10 +1,9 @@
 <p-toolbar>
   <div class="p-toolbar-group-center">
-      <span class="p-input-icon-left">
-          <i class="pi pi-search"></i>
-          <input pInputText placeholder="Search" [(ngModel)]="searchText" (keypress)="onKeyPress($event)" />
-      </span>
-      <button pButton type="button" icon="pi pi-search" label="Search" (click)="searchProducts()"></button>
+    <p-inputGroup class="search-bar">
+      <input type="text" pInputText placeholder="Search" [(ngModel)]="searchText" (keypress)="onKeyPress($event)" />
+      <button type="button" pButton icon="pi pi-search" class="p-button-warning" (click)="searchProducts()"></button>
+    </p-inputGroup>
   </div>
 </p-toolbar>
 
