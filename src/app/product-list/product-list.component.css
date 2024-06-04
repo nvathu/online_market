@@ -1,12 +1,12 @@
 .p-toolbar-group-center {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .search-bar {
-  width: 50%;
-  max-width: 600px;
+  width: 100%;
+  max-width: 830px;
 }
 
 .product-list {
@@ -14,12 +14,7 @@
   justify-content: center;
 }
 
-.filter-sidebar {
-  width: 250px; 
-  padding: 20px;
-  background-color: #f8f8f8;
-  border-right: 1px solid #ddd;
-}
+
 
 .horizontal-cards {
   display: flex;
@@ -78,11 +73,7 @@
   font-weight: bold;
 }
 
-.view-toggle {
-  display: flex;
-  justify-content: flex-end;
-  padding-bottom: 20px;
-}
+
 
 .toggle-button {
   background-color: transparent;
@@ -152,7 +143,7 @@
 }
 
 .search-bar {
-  display: flex;
+display:inline-flex;
 margin: 15px;
 }
 
@@ -209,3 +200,14 @@ margin: 15px;
   align-items: center;
   height: 100px;
 }
+.toolbar-wrapper {
+  width: 100%;  /* Inherit full width from toolbar */
+}
+
+/* Inside your component's stylesheet */
+.toolbar-content {
+  display: flex;
+  justify-content: flex-end;  /* Align content to the right */
+  width: 100%;  /* Inherit full width from toolbar */
+}
+
