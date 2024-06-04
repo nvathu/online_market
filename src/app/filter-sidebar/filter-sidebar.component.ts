@@ -48,12 +48,6 @@ export class FilterSidebarComponent {
   }
 
   toggleSelection(array: any[], value: string) {
-    console.log('Array before toggle:', array);
-    console.log('Value to toggle:', value);
-    if (!Array.isArray(array)) {
-      console.error('Provided value is not an array');
-      return;
-    }
   
     const index = array.indexOf(value);
     if (index === -1) {
@@ -61,7 +55,6 @@ export class FilterSidebarComponent {
     } else {
       array.splice(index, 1);
     }
-    console.log('Array after toggle:', array);
     this.applyFilters();
   }
   

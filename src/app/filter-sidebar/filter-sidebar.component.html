@@ -1,19 +1,22 @@
 <div class="filter-sidebar">
-  <h3>Filters</h3>
+  <h2>Filters</h2>
   <div>
-    <h2>Brands</h2>
-    <div *ngFor="let brand of brands" class="checkbox-container">
+    <h3>Brands</h3>
+    <div *ngFor="let brand of brands" class="field-checkbox">
       <p-checkbox 
         name="brands" 
-        [binary]="true"
         [(ngModel)]="selectedBrands" 
-        [value]="brand.value">
+        [value]="brand.value"
+        (onChange)="applyFilters()"
+        >
+      
       </p-checkbox>
+      
       <label>{{ brand.label }}</label>
     </div>
   </div>
   <div>
-    <h2>Colors</h2>
+    <h3>Colors</h3>
     <p-multiSelect 
       [options]="colors" 
       [(ngModel)]="selectedColors" 
@@ -23,7 +26,7 @@
     </p-multiSelect>
   </div>
   <div>
-    <h2>Price Range</h2>
+    <h3>Price Range</h3>
     <p-slider 
       [(ngModel)]="rangeValues" 
       [min]="priceRange[0]" 
