@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { CartItem } from './cart-item';
+import { Subject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CartService {
     items: CartItem[] = [];
-
+    cartItemsChanged = new Subject<void>();
     constructor() {
         // Retrieve items from localStore when site is reloaded.
         const stored = localStorage.getItem('cartItems');
@@ -48,6 +49,7 @@ export class CartService {
             this.items.push(item);
         }
         localStorage.setItem('cartItems', JSON.stringify(this.items));
+        this.cartItemsChanged.next();
     }
 
     /**
@@ -70,6 +72,7 @@ export class CartService {
             this.items.push(item);
         }
         localStorage.setItem('cartItems', JSON.stringify(this.items));
+        this.cartItemsChanged.next();
     }
 
 
@@ -90,6 +93,7 @@ export class CartService {
             localStorage.removeItem('cartItems');
         else
             localStorage.setItem('cartItems', JSON.stringify(this.items));
+            this.cartItemsChanged.next();
     }
 
     /**
@@ -98,6 +102,7 @@ export class CartService {
     clearCart(): void {
         this.items = [];
         localStorage.removeItem('cartItems');
+        this.cartItemsChanged.next();
     }
 
     /**
