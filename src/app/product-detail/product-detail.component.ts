@@ -7,12 +7,13 @@ import {SplitterModule} from 'primeng/splitter';
 import { FormsModule } from '@angular/forms';
 import { ImageModule } from 'primeng/image';
 import { NgModule } from '@angular/core';
-
+import { CartService } from '../services/cart.service';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule,RouterLink,SplitterModule,FormsModule,ImageModule ],
+  imports: [CommonModule,RouterLink, ButtonModule, SplitterModule,FormsModule,ImageModule ],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })
@@ -25,7 +26,7 @@ export class ProductDetailComponent {
   productImage: string = '';
   
 
-  constructor(public productService:ProductService,private route:ActivatedRoute ){}
+  constructor(public productService:ProductService,private route:ActivatedRoute,  private cartService: CartService ){}
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     const colorParam = this.route.snapshot.queryParams['color'];
@@ -50,6 +51,16 @@ onColorChange(color: { color_id: string; color_name: string; color_hex: string }
   this.updateProductImage();
 }
 
-
+addToCart() {
+  if (this.selectedColor && this.selectedSize) {
+    const item = {
+      id: this.product.id,
+      color: this.selectedColor.color_id,
+      size: this.selectedSize,
+      quantity: 1
+    };
+    this.cartService.addCartItem(item);
+  }
+}
 }
 

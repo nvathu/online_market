@@ -42,8 +42,13 @@
     </div>
     <p class="product-price">{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</p>
    
+    <div class="product-actions">
+      <p-button label="Add to Cart" [rounded]="true"(click)="addToCart()" [disabled]="!selectedColor || !selectedSize"> </p-button>
+    </div>
   </div>
+ 
 </div>
+
 
 
 
