@@ -1,1 +1,38 @@
-<p>cart works!</p>
+<div class="container">
+    <div class="product-list">
+        <div class="horizontal-cards">
+            <div
+                *ngFor="let product of productMetaData; index as i"
+                class="horizontal-card"
+            >
+                <div class="card-img">
+                    <img [src]="getProductImage(items[i].id, items[i].color)" />
+                </div>
+                <div class="card-details">
+                    <p class="card-text" style="margin-bottom: 7px">
+                        {{ product.brand }}
+                    </p>
+                    <h5 class="card-title" style="margin-top: 14px">
+                        {{ product.name }}
+                    </h5>
+                    <p class="card-text card-price" style="margin-top: 10px">
+                        <span>{{ product.price }} €</span>
+                    </p>
+                </div>
+                <p-inputNumber
+                        [(ngModel)]= "items[i].quantity"
+                        (onInput)= "updateQuantity(items[i],$event.value?.toString()??'')"
+                        [showButtons]="true"
+                        [step]="1"
+                        buttonLayout="horizontal" 
+                        spinnerMode="horizontal"
+                        decrementButtonClass="p-button"
+                        incrementButtonClass="p-button"
+                        incrementButtonIcon="pi pi-plus"
+                        decrementButtonIcon="pi pi-minus"
+                        [min]="0"
+                    />
+            </div>
+        </div>
+    </div>
+</div>
