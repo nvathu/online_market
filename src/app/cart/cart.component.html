@@ -8,7 +8,7 @@
         <h5 class="card-title" (click)="navigateToProduct(item.id)">{{ getProductName(item.id) }}</h5>
         <p class="card-text">Color: {{ getColorName(item.id, item.color) }}</p>
         <p class="card-text">Size: {{ item.size }}</p>
-        <p class="card-text">Original Price: {{ getProductPrice(item.id) }} €</p>
+        <p class="card-text">Price: {{ getProductPrice(item.id) }} €</p>
         <p class="card-text card-price">Total: {{ getItemTotalPrice(item) }} €</p>
       </div>
       <div class="card-actions">
@@ -39,6 +39,12 @@
     </div>
   </div>
   <ng-template #emptyCart>
-    <p>Your cart is empty.</p>
+    <h2 style="margin-top: 100px; align-items: center; justify-content: center; display: flex; margin-bottom: 100px;">Your cart is empty.</h2>
+    <div class="cart-summary" style="align-items: center; justify-content: center; display: flex;">
+      <div class="cart-total" style="align-items: center; justify-content: center; display: flex;">
+        Total Price: {{ getTotalPrice() }} €
+      </div>
+      <button class="checkout-button" (click)="checkout()">Checkout</button>
+    </div>
   </ng-template>
   
