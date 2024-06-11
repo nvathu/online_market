@@ -129,11 +129,9 @@ export class ProductListComponent implements OnInit {
   }
 
   updateProducts(): void {
-    // Logik zum Aktualisieren der Produkte
   }
 
   deleteProducts(): void {
-    // Logik zum Löschen der Produkte
   }
 
   onFiltersChanged(filters: { brands: string[]; colors: string[]; priceRange: [number, number] }): void {
