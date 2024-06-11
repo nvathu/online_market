@@ -1,50 +1,48 @@
 <div *ngIf="items.length > 0; else emptyCart" class="cart-container">
-    <div *ngFor="let item of items" class="horizontal-card">
-      <div class="card-img">
-        <img [src]="getProductImage(item.id, item.color)" alt="Product Image">
-      </div>
-      <div class="card-details">
-        <p class="card-text">{{ getProductBrand(item.id) }}</p>
-        <h5 class="card-title" (click)="navigateToProduct(item.id)">{{ getProductName(item.id) }}</h5>
-        <p class="card-text">Color: {{ getColorName(item.id, item.color) }}</p>
-        <p class="card-text">Size: {{ item.size }}</p>
-        <p class="card-text">Price: {{ getProductPrice(item.id) }} €</p>
-        <p class="card-text card-price">Total: {{ getItemTotalPrice(item) }} €</p>
-      </div>
-      <div class="card-actions">
-        <div class="quantity-container">
-          <p-inputNumber
-            [(ngModel)]="item.quantity"
-            (onInput)="handleQuantityChange(item, $event)"
-            [showButtons]="true"
-            [step]="1"
-            buttonLayout="horizontal" 
-            spinnerMode="horizontal"
-            decrementButtonClass="p-button"
-            incrementButtonClass="p-button"
-            incrementButtonIcon="pi pi-plus"
-            decrementButtonIcon="pi pi-minus"
-            [min]="0"
-            class="small-input">
-          </p-inputNumber>
-          <button pButton icon="pi pi-trash" (click)="removeFromCart(item); $event.stopPropagation()" class="p-button-danger small-button"></button>
-        </div>
-      </div>
+  <div *ngFor="let item of items" class="horizontal-card">
+    <div class="card-img" (click)="navigateToProduct(item.id)" style="cursor: pointer; margin-right: 5px; margin-left: 10px;">
+      <img [src]="getProductImage(item.id, item.color)" alt="Product Image">
     </div>
-    <div class="cart-summary">
-      <div class="cart-total">
-        Total Price: {{ getTotalPrice() }} €
+    <div class="card-details" (click)="navigateToProduct(item.id)" style="cursor: pointer;">
+      <p class="card-text">{{ getProductBrand(item.id) }}</p>
+      <h5 class="card-title">{{ getProductName(item.id) }}</h5>
+      <p class="card-text">Color: {{ getColorName(item.id, item.color) }}</p>
+      <p class="card-text">Size: {{ item.size }}</p>
+      <p class="card-text">Price: {{ getProductPrice(item.id) }} €</p>
+      <p class="card-text card-price">Total: {{ getItemTotalPrice(item) }} €</p>
+    </div>
+    <div class="card-actions">
+      <div class="quantity-container">
+        <p-inputNumber
+          [(ngModel)]="item.quantity"
+          (onInput)="handleQuantityChange(item, $event)"
+          [showButtons]="true"
+          [step]="1"
+          buttonLayout="horizontal" 
+          spinnerMode="horizontal"
+          decrementButtonClass="p-button"
+          incrementButtonClass="p-button"
+          incrementButtonIcon="pi pi-plus"
+          decrementButtonIcon="pi pi-minus"
+          [min]="0">
+        </p-inputNumber>
+        <button pButton icon="pi pi-trash" (click)="removeFromCart(item); $event.stopPropagation()" class="p-button-danger small-button"></button>
       </div>
-      <button class="checkout-button" (click)="checkout()">Checkout</button>
     </div>
   </div>
-  <ng-template #emptyCart>
-    <h2 style="margin-top: 100px; align-items: center; justify-content: center; display: flex; margin-bottom: 100px;">Your cart is empty.</h2>
-    <div class="cart-summary" style="align-items: center; justify-content: center; display: flex;">
-      <div class="cart-total" style="align-items: center; justify-content: center; display: flex;">
-        Total Price: {{ getTotalPrice() }} €
-      </div>
-      <button class="checkout-button" (click)="checkout()">Checkout</button>
+  <div class="cart-summary">
+    <div class="cart-total">
+      Total Price: {{ getTotalPrice() }} €
     </div>
-  </ng-template>
-  
+    <button class="checkout-button" (click)="checkout()">Checkout</button>
+  </div>
+</div>
+<ng-template #emptyCart>
+  <h2 style="margin-top: 100px; align-items: center; justify-content: center; display: flex; margin-bottom: 100px;">Your cart is empty.</h2>
+  <div class="cart-summary" style="align-items: center; justify-content: center; display: flex;">
+    <div class="cart-total" style="align-items: center; justify-content: center; display: flex;">
+      Total Price: {{ getTotalPrice() }} €
+    </div>
+    <button class="checkout-button" (click)="checkout()">Checkout</button>
+  </div>
+</ng-template>

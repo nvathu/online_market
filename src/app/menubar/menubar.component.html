@@ -10,7 +10,9 @@
             <p-button [routerLink]="['login']" [text]="true" icon="pi pi-sign-in" label="Log in">
             </p-button>
             <p-button [routerLink]="['register']" [text]="true" icon="pi pi-user-plus" label="Register"></p-button> 
-            <p-button [routerLink]="['cart']" [text]="true" icon="pi pi-shopping-cart" [badge]="cartItemCount" badgeClass="p-badge-info"></p-button>
+            <a [routerLink]="['/cart']" class="cart-icon">
+                <i class="pi pi-shopping-cart text-3xl" pBadge [value]="cartItemCount" [badgeDisabled]="!cartItemCount"></i>
+            </a>
         </div>
     </div>
 </nav>

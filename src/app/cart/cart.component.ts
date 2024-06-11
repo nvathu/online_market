@@ -32,7 +32,6 @@ export class CartComponent implements OnInit {
       this.productMetaData = products;
     });
 
-    // Subscribe to changes in the cart
     this.cartService.cartItemsChanged.subscribe(() => {
       this.items = this.cartService.getAllCartItems();
     });
@@ -81,13 +80,13 @@ export class CartComponent implements OnInit {
       const productPrice = this.getProductPrice(item.id);
       return total + (productPrice * item.quantity);
     }, 0);
-    return totalPrice.toFixed(2); // Format the total price to two decimal places
+    return totalPrice.toFixed(2); 
   }
 
   getItemTotalPrice(item: CartItem): string {
     const productPrice = this.getProductPrice(item.id);
     const totalPrice = productPrice * item.quantity;
-    return totalPrice.toFixed(2); // Format the item total price to two decimal places
+    return totalPrice.toFixed(2); 
   }
 
   checkout(): void {

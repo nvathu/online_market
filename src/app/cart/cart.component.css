@@ -24,12 +24,15 @@
 }
 
 .card-img {
-  width: 100px;
+  width: 180px; /* Increase the width of the product image */
+  height: 180px; /* Set a fixed height for the product image */
+  cursor: pointer;
 }
 
 .card-img img {
   width: 100%;
-  height: auto;
+  height: 100%; /* Ensure the image covers the whole container */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
 }
 
 .card-details {
@@ -37,6 +40,7 @@
   padding: 10px;
   padding-bottom: 5px;
   width: 50%;
+  cursor: pointer;
 }
 
 .card-title {
@@ -44,13 +48,9 @@
   margin-bottom: 3px;
   color: inherit;
   text-decoration: none;
-  cursor: pointer;
 }
 
-.card-title:hover {
-  color: blue;
-  text-decoration: underline;
-}
+
 
 .card-text {
   font-size: 14px;
@@ -70,6 +70,7 @@
   flex-direction: row;
   align-items: center;
   padding: 10px;
+  cursor: default;
 }
 
 .quantity-container {
@@ -77,8 +78,6 @@
   flex-direction: row;
   align-items: center;
 }
-
-
 
 .quantity-container .small-button {
   margin-left: 10px;

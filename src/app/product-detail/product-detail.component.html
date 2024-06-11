@@ -1,12 +1,12 @@
 <div *ngIf="product" class="product-detail-container" style="margin-top: 100px;">
   <div class="product-image-container">
     <p-image 
-    [src]="productImage" 
-    alt="{{ product.name }}" 
-    width="350" 
-    [preview]="true" 
-    class="product-image">
-  </p-image>
+      [src]="productImage" 
+      alt="{{ product.name }}" 
+      width="350" 
+      [preview]="true" 
+      class="product-image">
+    </p-image>
   </div>  
   <div class="product-info-container">
     <div class="product-header">
@@ -42,13 +42,8 @@
     </div>
     <p class="product-price">{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</p>
    
-    <div class="product-actions">
-      <p-button label="Add to Cart" [rounded]="true"(click)="addToCart()" [disabled]="!selectedColor || !selectedSize"> </p-button>
+    <div style="margin-top: 20px;">
+      <p-button  label="Add to Cart" icon="pi pi-shopping-cart" [rounded]="true"(click)="addToCart()" [disabled]="!selectedColor || !selectedSize" size="large" />
     </div>
   </div>
- 
 </div>
-
-
-
-
