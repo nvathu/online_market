@@ -31,7 +31,7 @@ export class CartComponent implements OnInit {
     this.productService.getAllProductMetadata().subscribe((products) => {
       this.productMetaData = products;
     });
-
+  
     this.cartService.cartItemsChanged.subscribe(() => {
       this.items = this.cartService.getAllCartItems();
     });
@@ -90,7 +90,6 @@ export class CartComponent implements OnInit {
   }
 
   checkout(): void {
-    this.router.navigate(['/checkout']);
   }
 
   navigateToProduct(productId: string): void {
