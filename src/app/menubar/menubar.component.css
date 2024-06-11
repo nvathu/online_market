@@ -56,7 +56,6 @@ nav {
     right: -10px;
 }
 
-/* Adapt PrimeNG styles */
 :host ::ng-deep .menu-entries .p-button-label {
     font-weight: normal;
 }
