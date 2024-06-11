@@ -1,0 +1,16 @@
+<p-steps [model]="steps" [(activeIndex)]="activeIndex" [readonly]="false"></p-steps>
+
+<div *ngIf="activeIndex === 0">
+  <app-address-step></app-address-step>
+</div>
+<div *ngIf="activeIndex === 1">
+  <app-delivery-payment-step></app-delivery-payment-step>
+</div>
+<div *ngIf="activeIndex === 2">
+  <app-summary-step></app-summary-step>
+</div>
+
+<div>
+  <button pButton label="Next" (click)="next()" [disabled]="!canProceed()"></button>
+  <button pButton label="Back" (click)="back()" [disabled]="activeIndex === 0"></button>
+</div>

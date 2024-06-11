@@ -1,0 +1,9 @@
+<div>
+    <h3>Summary</h3>
+    <p><strong>Delivery Address:</strong> {{address.name}}, {{address.street}}, {{address.postalCode}}, {{address.city}}, {{address.country}}</p>
+    <p><strong>Delivery Option:</strong> {{selectedDeliveryOption.label}}</p>
+    <p><strong>Payment Option:</strong> {{selectedPaymentOption.label}}</p>
+    <p><strong>Total Price:</strong> {{totalPrice}} €</p>
+    <button pButton label="Confirm Purchase" (click)="confirmPurchase()"></button>
+  </div>
+  

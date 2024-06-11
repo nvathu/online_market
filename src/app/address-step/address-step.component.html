@@ -1,0 +1,23 @@
+<form #addressForm="ngForm">
+    <div class="p-field">
+      <label for="name">Name</label>
+      <input id="name" type="text" pInputText [(ngModel)]="address.name" name="name" required>
+    </div>
+    <div class="p-field">
+      <label for="street">Street</label>
+      <input id="street" type="text" pInputText [(ngModel)]="address.street" name="street" required>
+    </div>
+    <div class="p-field">
+      <label for="postalCode">Postal Code</label>
+      <input id="postalCode" type="text" pInputText [(ngModel)]="address.postalCode" name="postalCode" required>
+    </div>
+    <div class="p-field">
+      <label for="city">City</label>
+      <input id="city" type="text" pInputText [(ngModel)]="address.city" name="city" required>
+    </div>
+    <div class="p-field">
+      <label for="country">Country</label>
+      <input id="country" type="text" pInputText [(ngModel)]="address.country" name="country" required>
+    </div>
+  </form>
+  
