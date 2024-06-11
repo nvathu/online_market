@@ -1,3 +1,15 @@
 :host {
   display: block;
 }
+.summary-container {
+  padding: 1em;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+p {
+  margin: 0.5em 0;
+}
+button {
+  margin-top: 1em;
+}

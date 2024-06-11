@@ -1,12 +1,12 @@
-<form #deliveryPaymentForm="ngForm">
+<form #deliveryPaymentForm="ngForm" class="p-fluid">
     <h3>Delivery Options</h3>
-    <div *ngFor="let option of deliveryOptions">
+    <div class="p-field-radiobutton" *ngFor="let option of deliveryOptions">
       <p-radioButton name="deliveryOption" [(ngModel)]="selectedDeliveryOption" [value]="option"></p-radioButton>
       <label>{{option.label}} - {{option.price}} €</label>
     </div>
   
     <h3>Payment Options</h3>
-    <div *ngFor="let option of paymentOptions">
+    <div class="p-field-radiobutton" *ngFor="let option of paymentOptions">
       <p-radioButton name="paymentOption" [(ngModel)]="selectedPaymentOption" [value]="option"></p-radioButton>
       <label>{{option.label}}</label>
     </div>

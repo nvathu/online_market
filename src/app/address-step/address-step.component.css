@@ -1,3 +1,6 @@
-:host {
-  display: block;
+p-field {
+  margin-bottom: 1em;
+}
+small {
+  color: red;
 }
