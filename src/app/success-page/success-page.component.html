@@ -1,6 +1,5 @@
-<div class="success-page">
-    <h2>Checkout Successful!</h2>
-    <p>Your order has been placed successfully.</p>
-    <button pButton label="Go to Home" routerLink="/"></button>
-  </div>
-  
+<div class="success-container">
+  <h1>Checkout Successful</h1>
+  <p>Your order has been placed successfully.</p>
+  <button pButton label="Go to Homepage" icon="pi pi-home" (click)="router.navigate(['/'])"></button>
+</div>

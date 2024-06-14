@@ -5,7 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CartComponent } from './cart/cart.component';
-import { CheckoutWizardComponent } from './checkout-wizard/checkout-wizard.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 export const routes: Routes = [
     { 
@@ -27,7 +27,7 @@ export const routes: Routes = [
         path: 'cart',
         component:CartComponent,   
     },
-    { path: 'checkout', component: CheckoutWizardComponent },
+    { path: 'checkout', component: CheckoutComponent },
     {
         path: '**',
         redirectTo: '',
