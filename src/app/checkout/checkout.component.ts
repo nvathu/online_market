@@ -38,11 +38,12 @@ export class CheckoutComponent implements OnInit {
   totalPrice: number = 0;
 
   constructor(
-    private fb: FormBuilder, 
-    private countryService: CountryService, 
+    private fb: FormBuilder,
+    private countryService: CountryService,
     private cartService: CartService,
-    private productService: ProductService
-  ) { }
+    private productService: ProductService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.countries = this.countryService.getCountries();
@@ -53,7 +54,7 @@ export class CheckoutComponent implements OnInit {
       streetNumber: ['', Validators.required],
       postalCode: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       city: ['', Validators.required],
-      country: ['', Validators.required]
+      country: ['', Validators.required],
     });
 
     // Prefill with example data
@@ -62,15 +63,15 @@ export class CheckoutComponent implements OnInit {
       lastName: 'Doe',
       street: 'Main Street',
       streetNumber: '123',
-      postalCode: '12345',
-      city: 'Metropolis',
-      country: { name: 'Germany' }
+      postalCode: '78462',
+      city: 'Konstanz',
+      country: { name: 'Germany' },
     });
 
     this.steps = [
       { label: 'Address' },
       { label: 'Delivery & Payment' },
-      { label: 'Summary' }
+      { label: 'Summary' },
     ];
 
     this.cartItems = this.cartService.getAllCartItems();
@@ -105,30 +106,35 @@ export class CheckoutComponent implements OnInit {
   confirmPurchase() {
     // Clear cart and finalize purchase
     this.cartService.clearCart();
-    alert('Purchase confirmed!');
+    this.router.navigate(['/success']);
   }
 
   calculateTotalPrice() {
-    const shippingCost = this.selectedShipping === 'standard' ? 5 : this.selectedShipping === 'express' ? 10 : 20;
+    const shippingCost =
+      this.selectedShipping === 'standard'
+        ? 5
+        : this.selectedShipping === 'express'
+        ? 10
+        : 20;
     const cartTotal = this.cartItems.reduce((total, item) => {
       const productPrice = this.getProductPrice(item.id);
-      return total + (productPrice * item.quantity);
+      return total + productPrice * item.quantity;
     }, 0);
-    this.totalPrice = cartTotal + shippingCost;
+    this.totalPrice = parseFloat((cartTotal + shippingCost).toFixed(2)); // Rundung auf zwei Nachkommastellen
   }
 
   getProductPrice(id: string): number {
-    return this.productMetaData.find(product => product.id === id)?.price ?? 0;
+    return this.productMetaData.find((product) => product.id === id)?.price ?? 0;
   }
 
   getItemTotalPrice(item: CartItem): string {
     const productPrice = this.getProductPrice(item.id);
     const totalPrice = productPrice * item.quantity;
-    return totalPrice.toFixed(2); 
+    return totalPrice.toFixed(2); // Rundung auf zwei Nachkommastellen
   }
 
   getProductName(id: string): string {
-    return this.productMetaData.find(product => product.id === id)?.name ?? '';
+    return this.productMetaData.find((product) => product.id === id)?.name ?? '';
   }
 
   getProductImage(id: string, color_id: string): string {
@@ -136,10 +142,18 @@ export class CheckoutComponent implements OnInit {
   }
 
   getProductBrand(id: string): string {
-    return this.productMetaData.find(product => product.id === id)?.brand ?? '';
+    return this.productMetaData.find((product) => product.id === id)?.brand ?? '';
   }
 
   getColorName(id: string, colorId: string): string {
-    return this.productMetaData.find(product => product.id === id)?.colors.find(color => color.color_id === colorId)?.color_name ?? '';
+    return (
+      this.productMetaData
+        .find((product) => product.id === id)
+        ?.colors.find((color) => color.color_id === colorId)?.color_name ?? ''
+    );
+  }
+
+  navigateToProduct(productId: string): void {
+    this.router.navigate(['/products', productId]);
   }
 }

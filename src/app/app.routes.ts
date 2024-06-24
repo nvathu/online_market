@@ -6,6 +6,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { SuccessPageComponent } from './success-page/success-page.component';
 
 export const routes: Routes = [
     { 
@@ -28,6 +29,7 @@ export const routes: Routes = [
         component:CartComponent,   
     },
     { path: 'checkout', component: CheckoutComponent },
+    { path: 'success', component: SuccessPageComponent },
     {
         path: '**',
         redirectTo: '',
