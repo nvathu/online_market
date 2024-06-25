@@ -52,7 +52,7 @@ export class CheckoutComponent implements OnInit {
       lastName: ['', Validators.required],
       street: ['', Validators.required],
       streetNumber: ['', [Validators.required, Validators.pattern(/.*\d+.*/)]],
-      postalCode: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      postalCode: ['', [Validators.required, Validators.pattern('^[0-9]{4,5}$')]],
       city: ['', Validators.required],
       country: ['', Validators.required],
     });

@@ -201,9 +201,17 @@ button.responsive-button .p-button-label {
 .step-instruction {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   color: #555;
   padding: 10px 20px; 
 
   font-style: italic;
+}
+
+.step-content .error-message-container {
+  margin-top: 4px;
+  height: 18px; /* Fixed height for the error message container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

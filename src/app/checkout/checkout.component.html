@@ -6,7 +6,7 @@
       <h2 class="step-title">Delivery Address</h2>
       <p class="step-instruction" style="margin-bottom: 40px;">Please enter your delivery address. <br> Ensure all fields are filled out correctly before proceeding.</p>
       
-      <div class="input-container" style="margin: 30px;">
+      <div class="input-container">
         <p-floatLabel>
           <input pInputText formControlName="firstName" id="firstName" required>
           <label for="firstName">* First Name</label>
@@ -111,23 +111,23 @@
         
       </div>
       <div class="shipping-option">
-        <p-radioButton name="shipping" value="Standard + 5€ 3-5 days" label="Standard Shipping - 5€ - 3-5 days" [(ngModel)]="selectedShipping" (ngModelChange)="calculateTotalPrice()">
+        <p-radioButton name="shipping" value="Standard + 5€ 3-5 days" label="Standard Shipping:   5€  3-5 days" [(ngModel)]="selectedShipping" (ngModelChange)="calculateTotalPrice()">
           <ng-template pTemplate="label">
-            <i class="pi pi-truck"></i> Standard Shipping - 5€ - 3-5 days
+            <i class="pi pi-truck"></i> Standard Shipping   5€  3-5 days
           </ng-template>
         </p-radioButton>
       </div>
       <div class="shipping-option">
-        <p-radioButton name="shipping" value="Express + 10€  1-2 days" label="Express Shipping - 10€ - 1-2 days" [(ngModel)]="selectedShipping" (ngModelChange)="calculateTotalPrice()">
+        <p-radioButton name="shipping" value="Express + 10€  1-2 days" label="Express Shipping:   10€  1-2 days" [(ngModel)]="selectedShipping" (ngModelChange)="calculateTotalPrice()">
           <ng-template pTemplate="label">
-            <i class="pi pi-send"></i> Express Shipping - 10€ - 1-2 days
+            <i class="pi pi-send"></i> Express Shipping   10€  1-2 days
           </ng-template>
         </p-radioButton>
       </div>
       <div class="shipping-option">
-        <p-radioButton name="shipping" value="Overnight + 20€ Next day" label="Overnight Shipping - 20€ - Next day" [(ngModel)]="selectedShipping" (ngModelChange)="calculateTotalPrice()">
+        <p-radioButton name="shipping" value="Overnight + 20€ Next day" label="Overnight Shipping:   20€  Next day" [(ngModel)]="selectedShipping" (ngModelChange)="calculateTotalPrice()">
           <ng-template pTemplate="label">
-            <i class="pi pi-plane"></i> Overnight Shipping - 20€ - Next day
+            <i class="pi pi-plane"></i> Overnight Shipping   20€  Next day
           </ng-template>
         </p-radioButton>
       </div>
