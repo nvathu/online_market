@@ -90,6 +90,7 @@ export class CartComponent implements OnInit {
   }
 
   checkout(): void {
+    this.router.navigate(['/checkout']); // Navigate to the checkout wizard
   }
 
   navigateToProduct(productId: string): void {

@@ -163,3 +163,16 @@
   margin-top: 50px;
   font-size: 18px;
 }
+
+.error-message-container {
+  height: 20px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkout-button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+  color: #aaa; 
+}

@@ -1,0 +1,217 @@
+.form-container {
+  width: 1250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-container {
+  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.button-container {
+  width: auto;
+  display: inline-flex;
+  justify-content:center;
+  width: 100%;
+  margin-top: 20px;
+  white-space: nowrap;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #555;
+  text-align: center;
+}
+
+p {
+  margin: 10px 0;
+  color: #666;
+}
+
+.error-message {
+  color: red; 
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+button[pButton] {
+  width: 120px;
+}
+
+button[pButton][label="Next"],
+button[pButton][label="Confirm Purchase"] {
+  margin-left: auto;
+}
+
+button[pButton][label="Back"] {
+  margin-right: auto;
+}
+
+.shipping-option {
+  margin-bottom: 20px;
+}
+
+
+.payment-option {
+  margin-bottom: 20px;
+}
+
+.step-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.summary-item {
+  margin-bottom: 10px;
+}
+
+button.responsive-button .p-button-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap; 
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+
+.horizontal-card {
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+}
+
+.horizontal-card:hover {
+  box-shadow: 0 .0625rem 20px 0 rgba(0,0,0,.05);
+  transform: translateY(-.0625rem);
+  z-index: 1;
+}
+
+.card-img {
+  width: 140px;
+  height: 140px;
+  cursor: pointer;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-details {
+  flex-grow: 1;
+  padding: 10px;
+  width: 50%;
+  cursor: pointer;
+}
+
+.card-title {
+  font-size: 16px;
+  margin-bottom: 3px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.card-text {
+  font-size: 14px;
+}
+
+.card-text.card-price {
+  display: inline-block;
+  background-color: lightskyblue;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid rgb(0, 132, 255);
+  font-weight: bold;
+  width: 200px; 
+}
+
+.summary-details {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  background-color: #fafafa;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+}
+
+.centered-card {
+  margin: 0 auto;
+}
+
+.summary-left, .summary-right {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+.subtitle-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
+
+
+.confirm-button {
+  width: 250px;
+  flex-grow: 0.04;
+  text-align: center;
+}
+
+.step-instruction {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  color: #555;
+  padding: 10px 20px; 
+
+  font-style: italic;
+}
+
+.step-content .error-message-container {
+  margin-top: 4px;
+  height: 18px; /* Fixed height for the error message container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

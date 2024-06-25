@@ -36,7 +36,7 @@
       </div>
     </div>
     <ng-template #emptyCart>
-      <div class="empty-cart" style="margin-bottom: 30px; ">
+      <div class="empty-cart" style="margin-bottom: 30px;">
         <h2>Your cart is empty.</h2>
       </div>
     </ng-template>
@@ -49,6 +49,6 @@
       <div class="total-label" style="margin: 30px;">Total Price:</div>
       <div class="total-amount" style="margin: 30px;">{{ getTotalPrice() }} €</div>
     </div>
-    <button class="checkout-button" (click)="checkout()">Continue to checkout</button>
+    <button class="checkout-button" (click)="checkout()" [disabled]="items.length === 0">Continue to checkout</button>
   </div>
 </div>
