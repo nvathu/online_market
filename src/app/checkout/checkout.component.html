@@ -5,74 +5,99 @@
     <div class="form-container">
       <h2 class="step-title">Delivery Address</h2>
       <p class="step-instruction" style="margin-bottom: 40px;">Please enter your delivery address. <br> Ensure all fields are filled out correctly before proceeding.</p>
-      <div class="input-container">
+      
+      <div class="input-container" style="margin: 30px;">
         <p-floatLabel>
           <input pInputText formControlName="firstName" id="firstName" required>
           <label for="firstName">* First Name</label>
+        </p-floatLabel>
+        <div class="error-message-container">
           <div *ngIf="addressForm.controls['firstName'].invalid && (addressForm.controls['firstName'].dirty || addressForm.controls['firstName'].touched)" class="error-message">
             <small *ngIf="addressForm.controls['firstName'].errors?.['required']">First Name is required</small>
           </div>
-        </p-floatLabel>
+        </div>
       </div>
+      
       <div class="input-container">
         <p-floatLabel>
           <input pInputText formControlName="lastName" id="lastName" required>
           <label for="lastName">* Last Name</label>
+        </p-floatLabel>
+        <div class="error-message-container">
           <div *ngIf="addressForm.controls['lastName'].invalid && (addressForm.controls['lastName'].dirty || addressForm.controls['lastName'].touched)" class="error-message">
             <small *ngIf="addressForm.controls['lastName'].errors?.['required']">Last Name is required</small>
           </div>
-        </p-floatLabel>
+        </div>
       </div>
+      
       <div class="input-container">
         <p-floatLabel>
           <input pInputText formControlName="street" id="street" required>
           <label for="street">* Street</label>
+        </p-floatLabel>
+        <div class="error-message-container">
           <div *ngIf="addressForm.controls['street'].invalid && (addressForm.controls['street'].dirty || addressForm.controls['street'].touched)" class="error-message">
             <small *ngIf="addressForm.controls['street'].errors?.['required']">Street is required</small>
           </div>
-        </p-floatLabel>
+        </div>
       </div>
+      
       <div class="input-container">
         <p-floatLabel>
           <input pInputText formControlName="streetNumber" id="streetNumber" required>
           <label for="streetNumber">* No.</label>
+        </p-floatLabel>
+        <div class="error-message-container">
           <div *ngIf="addressForm.controls['streetNumber'].invalid && (addressForm.controls['streetNumber'].dirty || addressForm.controls['streetNumber'].touched)" class="error-message">
             <small *ngIf="addressForm.controls['streetNumber'].errors?.['required']">Number is required</small>
+            <small *ngIf="addressForm.controls['streetNumber'].errors?.['pattern']">Number must contain at least one digit</small>
           </div>
-        </p-floatLabel>
+        </div>
       </div>
+      
       <div class="input-container">
         <p-floatLabel>
           <input pInputText formControlName="postalCode" id="postalCode" required>
           <label for="postalCode">* Postal Code</label>
+        </p-floatLabel>
+        <div class="error-message-container">
           <div *ngIf="addressForm.controls['postalCode'].invalid && (addressForm.controls['postalCode'].dirty || addressForm.controls['postalCode'].touched)" class="error-message">
             <small *ngIf="addressForm.controls['postalCode'].errors?.['required']">Postal Code is required</small>
+            <small *ngIf="addressForm.controls['postalCode'].errors?.['pattern']">Postal Code must be 4 or 5 digits</small>
           </div>
-        </p-floatLabel>
+        </div>
       </div>
+      
       <div class="input-container">
         <p-floatLabel>
           <input pInputText formControlName="city" id="city" required>
           <label for="city">* City</label>
+        </p-floatLabel>
+        <div class="error-message-container">
           <div *ngIf="addressForm.controls['city'].invalid && (addressForm.controls['city'].dirty || addressForm.controls['city'].touched)" class="error-message">
             <small *ngIf="addressForm.controls['city'].errors?.['required']">City is required</small>
           </div>
-        </p-floatLabel>
+        </div>
       </div>
+      
       <div class="input-container">
         <p-floatLabel>
           <p-dropdown formControlName="country" placeholder="* Country" [options]="countries" optionLabel="name"></p-dropdown>
+        </p-floatLabel>
+        <div class="error-message-container">
           <div class="error-message" *ngIf="addressForm.controls['country'].invalid && (addressForm.controls['country'].dirty || addressForm.controls['country'].touched)">
             <small *ngIf="addressForm.controls['country'].errors?.['required']">Country is required</small>
           </div>
-        </p-floatLabel>
+        </div>
       </div>
+      
       <div class="button-container">
         <button pButton type="submit" label="Next" [disabled]="addressForm.invalid"></button>
       </div>
     </div>
   </form>
 </div>
+
 
 <div *ngIf="activeIndex === 1" class="step-content"  style="margin-top: 30px; margin-bottom: 50px;">
   <div class="form-container">
