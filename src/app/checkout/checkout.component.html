@@ -27,7 +27,7 @@
         <div class="error-message-container">
           <div *ngIf="addressForm.controls['lastName'].invalid && (addressForm.controls['lastName'].dirty || addressForm.controls['lastName'].touched)" class="error-message">
             <small *ngIf="addressForm.controls['lastName'].errors?.['required']">Last Name is required</small>
-            <small *ngIf="addressForm.controls['lastName'].errors?.['pattern']">Last Name must contain only letters and German special characters</small>
+            <small *ngIf="addressForm.controls['lastName'].errors?.['pattern']">Last Name must contain only letters</small>
           </div>
         </div>
       </div>
@@ -40,7 +40,7 @@
         <div class="error-message-container">
           <div *ngIf="addressForm.controls['street'].invalid && (addressForm.controls['street'].dirty || addressForm.controls['street'].touched)" class="error-message">
             <small *ngIf="addressForm.controls['street'].errors?.['required']">Street is required</small>
-            <small *ngIf="addressForm.controls['street'].errors?.['pattern']">Street must contain only letters and German special characters</small>
+            <small *ngIf="addressForm.controls['street'].errors?.['pattern']">Street must contain only letters</small>
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@
         <div class="error-message-container">
           <div *ngIf="addressForm.controls['city'].invalid && (addressForm.controls['city'].dirty || addressForm.controls['city'].touched)" class="error-message">
             <small *ngIf="addressForm.controls['city'].errors?.['required']">City is required</small>
-            <small *ngIf="addressForm.controls['city'].errors?.['pattern']">City must contain only letters and German special characters</small>
+            <small *ngIf="addressForm.controls['city'].errors?.['pattern']">City must contain only letters</small>
           </div>
         </div>
       </div>
