@@ -1,6 +1,5 @@
 .form-container {
   width: 1250px;
- /* Set a fixed height for consistency */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,7 +93,7 @@ button.responsive-button .p-button-label {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  white-space: nowrap; /* Verhindert Zeilenumbrüche */
+  white-space: nowrap; 
 }
 
 .cart-items {
@@ -103,7 +102,9 @@ button.responsive-button .p-button-label {
   width: 100%;
 }
 
+
 .horizontal-card {
+  height: 50%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -123,8 +124,8 @@ button.responsive-button .p-button-label {
 }
 
 .card-img {
-  width: 180px;
-  height: 180px;
+  width: 140px;
+  height: 140px;
   cursor: pointer;
 }
 
@@ -159,18 +160,18 @@ button.responsive-button .p-button-label {
   padding: 5px;
   border: 1px solid rgb(0, 132, 255);
   font-weight: bold;
-  width: 200px; /* Ensures the box is only as wide as the content */
+  width: 200px; 
 }
 
 .summary-details {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
+  padding: 15px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  background-color: #fafafa;
   margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 600px;
 }
@@ -187,7 +188,7 @@ button.responsive-button .p-button-label {
 .subtitle-container {
   display: flex;
   align-items: center;
-  gap: 10px; /* Abstand zwischen Überschrift und Icon */
+  gap: 10px; 
 }
 
 
@@ -196,12 +197,13 @@ button.responsive-button .p-button-label {
   flex-grow: 0.04;
   text-align: center;
 }
+
 .step-instruction {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 1.1rem; /* Leicht vergrößerte Schriftgröße */
-  color: #555; /* Dezente Textfarbe */
-  padding: 10px 20px; /* Polsterung für den Text */
+  font-size: 1.1rem;
+  color: #555;
+  padding: 10px 20px; 
 
-  font-style: italic; /* Kursiv für einen anderen Stil */
+  font-style: italic;
 }

@@ -108,21 +108,21 @@ export class CheckoutComponent implements OnInit {
     this.cartService.clearCart();
     this.router.navigate(['/success']);
   }
-  calculateTotalPrice() {
+  calculateTotalPrice() { 
     let shippingCost = 0;
   
     switch (this.selectedShipping) {
-      case 'standard':
+      case 'Standard + 5€ 3-5 days':
         shippingCost = 5;
         break;
-      case 'express':
+      case 'Express + 10€  1-2 days':
         shippingCost = 10;
         break;
-      case 'overnight':
+      case 'Overnight + 20€ Next day':
         shippingCost = 20;
         break;
       default:
-        shippingCost = 0; // Falls keine Versandoption ausgewählt ist
+        shippingCost = 0;
     }
   
     const cartTotal = this.cartItems.reduce((total, item) => {
@@ -130,9 +130,8 @@ export class CheckoutComponent implements OnInit {
       return total + productPrice * item.quantity;
     }, 0);
   
-    this.totalPrice = parseFloat((cartTotal + shippingCost).toFixed(2)); // Rundung auf zwei Nachkommastellen
+    this.totalPrice = parseFloat((cartTotal + shippingCost).toFixed(2)); 
   }
-  
   
 
   getProductPrice(id: string): number {
@@ -142,7 +141,7 @@ export class CheckoutComponent implements OnInit {
   getItemTotalPrice(item: CartItem): string {
     const productPrice = this.getProductPrice(item.id);
     const totalPrice = productPrice * item.quantity;
-    return totalPrice.toFixed(2); // Rundung auf zwei Nachkommastellen
+    return totalPrice.toFixed(2);
   }
 
   getProductName(id: string): string {

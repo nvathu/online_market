@@ -1,6 +1,6 @@
 <p-steps [model]="steps" [(activeIndex)]="activeIndex" styleClass="steps-custom"></p-steps>
 
-<div *ngIf="activeIndex === 0" class="step-content" style="margin-top: 30px;">
+<div *ngIf="activeIndex === 0" class="step-content" style="margin-top: 30px; margin-bottom: 50px;">
   <form [formGroup]="addressForm" (ngSubmit)="onAddressSubmit()">
     <div class="form-container">
       <h2 class="step-title">Delivery Address</h2>
@@ -74,7 +74,7 @@
   </form>
 </div>
 
-<div *ngIf="activeIndex === 1" class="step-content"  style="margin-top: 30px;">
+<div *ngIf="activeIndex === 1" class="step-content"  style="margin-top: 30px; margin-bottom: 50px;">
   <div class="form-container">
     <h2 class="step-title">Delivery & Payment</h2>
     <p class="step-instruction" >Select your preferred shipping method and payment option. <br>
@@ -86,21 +86,21 @@
         
       </div>
       <div class="shipping-option">
-        <p-radioButton name="shipping" value="Standard + 5€ 3-5 days" label="Standard Shipping - 5€ - 3-5 days" [(ngModel)]="selectedShipping">
+        <p-radioButton name="shipping" value="Standard + 5€ 3-5 days" label="Standard Shipping - 5€ - 3-5 days" [(ngModel)]="selectedShipping" (ngModelChange)="calculateTotalPrice()">
           <ng-template pTemplate="label">
             <i class="pi pi-truck"></i> Standard Shipping - 5€ - 3-5 days
           </ng-template>
         </p-radioButton>
       </div>
       <div class="shipping-option">
-        <p-radioButton name="shipping" value="Express + 10€  1-2 days" label="Express Shipping - 10€ - 1-2 days" [(ngModel)]="selectedShipping">
+        <p-radioButton name="shipping" value="Express + 10€  1-2 days" label="Express Shipping - 10€ - 1-2 days" [(ngModel)]="selectedShipping" (ngModelChange)="calculateTotalPrice()">
           <ng-template pTemplate="label">
             <i class="pi pi-send"></i> Express Shipping - 10€ - 1-2 days
           </ng-template>
         </p-radioButton>
       </div>
       <div class="shipping-option">
-        <p-radioButton name="shipping" value="Overnight + 20€ Next day" label="Overnight Shipping - 20€ - Next day" [(ngModel)]="selectedShipping">
+        <p-radioButton name="shipping" value="Overnight + 20€ Next day" label="Overnight Shipping - 20€ - Next day" [(ngModel)]="selectedShipping" (ngModelChange)="calculateTotalPrice()">
           <ng-template pTemplate="label">
             <i class="pi pi-plane"></i> Overnight Shipping - 20€ - Next day
           </ng-template>
@@ -142,12 +142,12 @@
   </div>
 </div>
 
-<div *ngIf="activeIndex === 2" class="step-content"  style="margin-top: 30px;">
+<div *ngIf="activeIndex === 2" class="step-content"  style="margin-top: 30px; margin-bottom: 50px;">
   <div class="form-container">
     <h2 class="step-title">Summary</h2>
     <p class="step-instruction" style="margin-bottom: 30px;">Review your order details below. <br> Ensure everything is correct before confirming your purchase.</p>
     <div class="cart-items">
-      <div *ngFor="let item of cartItems" class="horizontal-card">
+      <div *ngFor="let item of cartItems" class="horizontal-card" style="height: 50%;">
         <div class="card-img" (click)="navigateToProduct(item.id)" style="cursor: pointer;">
           <img [src]="getProductImage(item.id, item.color)" alt="Product Image">
         </div>
