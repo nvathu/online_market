@@ -1,0 +1,213 @@
+<p-steps [model]="steps" [(activeIndex)]="activeIndex" styleClass="steps-custom"></p-steps>
+
+<div *ngIf="activeIndex === 0" class="step-content" style="margin-top: 30px; margin-bottom: 50px;">
+  <form [formGroup]="addressForm" (ngSubmit)="onAddressSubmit()">
+    <div class="form-container">
+      <h2 class="step-title">Delivery Address</h2>
+      <p class="step-instruction" style="margin-bottom: 40px;">Please enter your delivery address. <br> Ensure all fields are filled out correctly before proceeding.</p>
+      
+      <div class="input-container">
+        <p-floatLabel>
+          <input pInputText formControlName="firstName" id="firstName" required>
+          <label for="firstName">* First Name</label>
+        </p-floatLabel>
+        <div class="error-message-container">
+          <div *ngIf="addressForm.controls['firstName'].invalid && (addressForm.controls['firstName'].dirty || addressForm.controls['firstName'].touched)" class="error-message">
+            <small *ngIf="addressForm.controls['firstName'].errors?.['required']">First Name is required</small>
+            <small *ngIf="addressForm.controls['firstName'].errors?.['pattern']">First Name must contain only letters</small>
+          </div>
+        </div>
+      </div>
+      
+      <div class="input-container">
+        <p-floatLabel>
+          <input pInputText formControlName="lastName" id="lastName" required>
+          <label for="lastName">* Last Name</label>
+        </p-floatLabel>
+        <div class="error-message-container">
+          <div *ngIf="addressForm.controls['lastName'].invalid && (addressForm.controls['lastName'].dirty || addressForm.controls['lastName'].touched)" class="error-message">
+            <small *ngIf="addressForm.controls['lastName'].errors?.['required']">Last Name is required</small>
+            <small *ngIf="addressForm.controls['lastName'].errors?.['pattern']">Last Name must contain only letters and German special characters</small>
+          </div>
+        </div>
+      </div>
+      
+      <div class="input-container">
+        <p-floatLabel>
+          <input pInputText formControlName="street" id="street" required>
+          <label for="street">* Street</label>
+        </p-floatLabel>
+        <div class="error-message-container">
+          <div *ngIf="addressForm.controls['street'].invalid && (addressForm.controls['street'].dirty || addressForm.controls['street'].touched)" class="error-message">
+            <small *ngIf="addressForm.controls['street'].errors?.['required']">Street is required</small>
+            <small *ngIf="addressForm.controls['street'].errors?.['pattern']">Street must contain only letters and German special characters</small>
+          </div>
+        </div>
+      </div>
+      
+      <div class="input-container">
+        <p-floatLabel>
+          <input pInputText formControlName="streetNumber" id="streetNumber" required>
+          <label for="streetNumber">* No.</label>
+        </p-floatLabel>
+        <div class="error-message-container">
+          <div *ngIf="addressForm.controls['streetNumber'].invalid && (addressForm.controls['streetNumber'].dirty || addressForm.controls['streetNumber'].touched)" class="error-message">
+            <small *ngIf="addressForm.controls['streetNumber'].errors?.['required']">Number is required</small>
+            <small *ngIf="addressForm.controls['streetNumber'].errors?.['pattern']">Number must contain at least one digit</small>
+          </div>
+        </div>
+      </div>
+      
+      <div class="input-container">
+        <p-floatLabel>
+          <input pInputText formControlName="postalCode" id="postalCode" required>
+          <label for="postalCode">* Postal Code</label>
+        </p-floatLabel>
+        <div class="error-message-container">
+          <div *ngIf="addressForm.controls['postalCode'].invalid && (addressForm.controls['postalCode'].dirty || addressForm.controls['postalCode'].touched)" class="error-message">
+            <small *ngIf="addressForm.controls['postalCode'].errors?.['required']">Postal Code is required</small>
+            <small *ngIf="addressForm.controls['postalCode'].errors?.['pattern']">Postal Code must be 4 or 5 digits</small>
+          </div>
+        </div>
+      </div>
+      
+      <div class="input-container">
+        <p-floatLabel>
+          <input pInputText formControlName="city" id="city" required>
+          <label for="city">* City</label>
+        </p-floatLabel>
+        <div class="error-message-container">
+          <div *ngIf="addressForm.controls['city'].invalid && (addressForm.controls['city'].dirty || addressForm.controls['city'].touched)" class="error-message">
+            <small *ngIf="addressForm.controls['city'].errors?.['required']">City is required</small>
+            <small *ngIf="addressForm.controls['city'].errors?.['pattern']">City must contain only letters and German special characters</small>
+          </div>
+        </div>
+      </div>
+      
+      <div class="input-container">
+        <p-floatLabel>
+          <p-dropdown formControlName="country" placeholder="* Country" [options]="countries" optionLabel="name"></p-dropdown>
+        </p-floatLabel>
+        <div class="error-message-container">
+          <div class="error-message" *ngIf="addressForm.controls['country'].invalid && (addressForm.controls['country'].dirty || addressForm.controls['country'].touched)">
+            <small *ngIf="addressForm.controls['country'].errors?.['required']">Country is required</small>
+          </div>
+        </div>
+      </div>
+      
+      <div class="button-container">
+        <button pButton type="submit" label="Next" [disabled]="addressForm.invalid"></button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="activeIndex === 1" class="step-content"  style="margin-top: 30px; margin-bottom: 50px;">
+  <div class="form-container">
+    <h2 class="step-title">Delivery & Payment</h2>
+    <p class="step-instruction" >Select your preferred shipping method and payment option. <br>
+    You must choose one option for each before proceeding.</p>
+    <div class="input-container">
+      <div class="subtitle-container">
+        <h3 class="pi pi-truck" style="padding: 0px; margin-bottom: 7px;"></h3>
+        <h3 class="step-subtitle">Shipping Options:</h3>
+        
+      </div>
+      <div class="shipping-option">
+        <p-radioButton name="shipping" value="Standard + 5€ 3-5 days" label="Standard Shipping:   5€  3-5 days" [(ngModel)]="selectedShipping" (ngModelChange)="calculateTotalPrice()">
+          <ng-template pTemplate="label">
+            <i class="pi pi-truck"></i> Standard Shipping   5€  3-5 days
+          </ng-template>
+        </p-radioButton>
+      </div>
+      <div class="shipping-option">
+        <p-radioButton name="shipping" value="Express + 10€  1-2 days" label="Express Shipping:   10€  1-2 days" [(ngModel)]="selectedShipping" (ngModelChange)="calculateTotalPrice()">
+          <ng-template pTemplate="label">
+            <i class="pi pi-send"></i> Express Shipping   10€  1-2 days
+          </ng-template>
+        </p-radioButton>
+      </div>
+      <div class="shipping-option">
+        <p-radioButton name="shipping" value="Overnight + 20€ Next day" label="Overnight Shipping:   20€  Next day" [(ngModel)]="selectedShipping" (ngModelChange)="calculateTotalPrice()">
+          <ng-template pTemplate="label">
+            <i class="pi pi-plane"></i> Overnight Shipping   20€  Next day
+          </ng-template>
+        </p-radioButton>
+      </div>
+    </div>
+    <div class="input-container">
+      <div class="subtitle-container">
+        <h3 class="pi pi-credit-card" style="padding: 0px; margin-bottom: 7px;"></h3>
+        <h3 class="step-subtitle">Payment Methods:</h3>
+        
+      </div>
+      <div class="payment-option">
+        <p-radioButton name="payment" value="Credit Card" label="Credit Card" [(ngModel)]="selectedPayment">
+          <ng-template pTemplate="label">
+            <i class="pi pi-credit-card"></i> Credit Card
+          </ng-template>
+        </p-radioButton>
+      </div>
+      <div class="payment-option">
+        <p-radioButton name="payment" value="PayPal" label="PayPal" [(ngModel)]="selectedPayment">
+          <ng-template pTemplate="label">
+            <i class="pi pi-paypal"></i> PayPal
+          </ng-template>
+        </p-radioButton>
+      </div>
+      <div class="payment-option">
+        <p-radioButton name="payment" value="Bank Transfer" label="Bank Transfer" [(ngModel)]="selectedPayment">
+          <ng-template pTemplate="label">
+            <i class="pi pi-money-bill"></i> Bank Transfer
+          </ng-template>
+        </p-radioButton>
+      </div>
+    </div>
+    <div class="button-container">
+      <button pButton label="Back" icon="pi pi-arrow-left" (click)="prevStep()"></button>
+      <button pButton label="Next" [disabled]="!selectedShipping || !selectedPayment" (click)="nextStep()"></button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="activeIndex === 2" class="step-content"  style="margin-top: 30px; margin-bottom: 50px;">
+  <div class="form-container">
+    <h2 class="step-title">Summary</h2>
+    <p class="step-instruction" style="margin-bottom: 30px;">Review your order details below. <br> Ensure everything is correct before confirming your purchase.</p>
+    <div class="cart-items">
+      <div *ngFor="let item of cartItems" class="horizontal-card" style="height: 50%;">
+        <div class="card-img" (click)="navigateToProduct(item.id)" style="cursor: pointer;">
+          <img [src]="getProductImage(item.id, item.color)" alt="Product Image">
+        </div>
+        <div class="card-details" (click)="navigateToProduct(item.id)" style="cursor: pointer;">
+          <p class="card-text">{{ getProductBrand(item.id) }}</p>
+          <h5 class="card-title">{{ getProductName(item.id) }}</h5>
+          <p class="card-text">Color: {{ getColorName(item.id, item.color) }}</p>
+          <p class="card-text">Size: {{ item.size }}</p>
+          <p class="card-text">Price: {{ getProductPrice(item.id) }} €</p>
+          <p class="card-text">Quantity: {{ item.quantity }}</p>
+          <p class="card-text card-price">Total: {{ getItemTotalPrice(item) }} €</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="summary-details horizontal-card centered-card">
+      <div class="summary-left" style="margin-left: 30px;">
+        <p class="card-text"><i class="pi pi-home" style="padding: 0px; margin-bottom: 5px; margin-right: 8px;"></i> <strong>Address:</strong></p>
+        <p class="card-text">{{ addressForm.value.firstName }} {{ addressForm.value.lastName }}</p>
+        <p class="card-text">{{ addressForm.value.street }} {{ addressForm.value.streetNumber }}</p>
+        <p class="card-text">{{ addressForm.value.postalCode }} {{ addressForm.value.city }}</p>
+        <p class="card-text">{{ addressForm.value.country.name }}</p>
+      </div>
+      <div class="summary-right" style="width: 250px; margin-right: 30px;">
+        <p class="card-text" style="width: 265px;"><i class="pi pi-truck" style="padding: 0px; margin-bottom: 5px; margin-right: 8px;"></i> <strong>Shipping:</strong> {{ selectedShipping }}</p>
+        <p class="card-text" style="width: 250px;"><i class="pi pi-credit-card" style="padding: 0px; margin-bottom: 5px; margin-right: 8px;"></i> <strong>Payment:</strong> {{ selectedPayment }}</p>
+        <p class="card-text card-price"><strong>Total Price:</strong> {{ totalPrice | number:'1.2-2' }}€</p>
+      </div>
+    </div>
+    <div class="button-container">
+      <button pButton label="Back" icon="pi pi-arrow-left" (click)="prevStep()"></button>
+      <button pButton class="responsive-button confirm-button" label="Confirm" icon="pi pi-check" (click)="confirmPurchase()"></button>
+    </div>
+  </div>
+</div>
