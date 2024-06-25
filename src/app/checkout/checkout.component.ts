@@ -48,20 +48,20 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
     this.countries = this.countryService.getCountries();
     this.addressForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      street: ['', Validators.required],
+      firstName: ['', [Validators.required, Validators.pattern(/^[A-Za-zäöüß\s]+$/)]],
+      lastName: ['', [Validators.required, Validators.pattern(/^[A-Za-zäöüß\s]+$/)]],
+      street: ['', [Validators.required, Validators.pattern(/^[A-Za-zäöüß\s]+$/)]],
       streetNumber: ['', [Validators.required, Validators.pattern(/.*\d+.*/)]],
       postalCode: ['', [Validators.required, Validators.pattern('^[0-9]{4,5}$')]],
-      city: ['', Validators.required],
+      city: ['', [Validators.required, Validators.pattern(/^[A-Za-zäöüß\s]+$/)]],
       country: ['', Validators.required],
     });
 
     // Prefill with example data
     this.addressForm.patchValue({
-      firstName: 'John',
-      lastName: 'Doe',
-      street: 'Main Street',
+      firstName: 'Tobias',
+      lastName: 'Lang',
+      street: 'Hauptstraße',
       streetNumber: '123',
       postalCode: '78462',
       city: 'Konstanz',
