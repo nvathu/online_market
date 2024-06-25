@@ -159,15 +159,49 @@ button.responsive-button .p-button-label {
   padding: 5px;
   border: 1px solid rgb(0, 132, 255);
   font-weight: bold;
+  width: 200px; /* Ensures the box is only as wide as the content */
 }
 
 .summary-details {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
   margin-bottom: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+}
+
+.centered-card {
+  margin: 0 auto;
+}
+
+.summary-left, .summary-right {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+.subtitle-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Abstand zwischen Überschrift und Icon */
+}
+
+
+.confirm-button {
+  width: 250px;
+  flex-grow: 0.04;
+  text-align: center;
+}
+.step-instruction {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.1rem; /* Leicht vergrößerte Schriftgröße */
+  color: #555; /* Dezente Textfarbe */
+  padding: 10px 20px; /* Polsterung für den Text */
+
+  font-style: italic; /* Kursiv für einen anderen Stil */
 }

@@ -108,20 +108,32 @@ export class CheckoutComponent implements OnInit {
     this.cartService.clearCart();
     this.router.navigate(['/success']);
   }
-
   calculateTotalPrice() {
-    const shippingCost =
-      this.selectedShipping === 'standard'
-        ? 5
-        : this.selectedShipping === 'express'
-        ? 10
-        : 20;
+    let shippingCost = 0;
+  
+    switch (this.selectedShipping) {
+      case 'standard':
+        shippingCost = 5;
+        break;
+      case 'express':
+        shippingCost = 10;
+        break;
+      case 'overnight':
+        shippingCost = 20;
+        break;
+      default:
+        shippingCost = 0; // Falls keine Versandoption ausgewählt ist
+    }
+  
     const cartTotal = this.cartItems.reduce((total, item) => {
       const productPrice = this.getProductPrice(item.id);
       return total + productPrice * item.quantity;
     }, 0);
+  
     this.totalPrice = parseFloat((cartTotal + shippingCost).toFixed(2)); // Rundung auf zwei Nachkommastellen
   }
+  
+  
 
   getProductPrice(id: string): number {
     return this.productMetaData.find((product) => product.id === id)?.price ?? 0;

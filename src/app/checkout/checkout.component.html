@@ -1,9 +1,10 @@
 <p-steps [model]="steps" [(activeIndex)]="activeIndex" styleClass="steps-custom"></p-steps>
 
-<div *ngIf="activeIndex === 0" class="step-content">
+<div *ngIf="activeIndex === 0" class="step-content" style="margin-top: 30px;">
   <form [formGroup]="addressForm" (ngSubmit)="onAddressSubmit()">
     <div class="form-container">
       <h2 class="step-title">Delivery Address</h2>
+      <p class="step-instruction" style="margin-bottom: 40px;">Please enter your delivery address. <br> Ensure all fields are filled out correctly before proceeding.</p>
       <div class="input-container">
         <p-floatLabel>
           <input pInputText formControlName="firstName" id="firstName" required>
@@ -73,27 +74,33 @@
   </form>
 </div>
 
-<div *ngIf="activeIndex === 1" class="step-content">
+<div *ngIf="activeIndex === 1" class="step-content"  style="margin-top: 30px;">
   <div class="form-container">
     <h2 class="step-title">Delivery & Payment</h2>
+    <p class="step-instruction" >Select your preferred shipping method and payment option. <br>
+    You must choose one option for each before proceeding.</p>
     <div class="input-container">
-      <h3 class="step-subtitle">Shipping Options</h3>
+      <div class="subtitle-container">
+        <h3 class="pi pi-truck" style="padding: 0px; margin-bottom: 7px;"></h3>
+        <h3 class="step-subtitle">Shipping Options:</h3>
+        
+      </div>
       <div class="shipping-option">
-        <p-radioButton name="shipping" value="standard" label="Standard Shipping - 5€ - 3-5 days" [(ngModel)]="selectedShipping">
+        <p-radioButton name="shipping" value="Standard + 5€ 3-5 days" label="Standard Shipping - 5€ - 3-5 days" [(ngModel)]="selectedShipping">
           <ng-template pTemplate="label">
             <i class="pi pi-truck"></i> Standard Shipping - 5€ - 3-5 days
           </ng-template>
         </p-radioButton>
       </div>
       <div class="shipping-option">
-        <p-radioButton name="shipping" value="express" label="Express Shipping - 10€ - 1-2 days" [(ngModel)]="selectedShipping">
+        <p-radioButton name="shipping" value="Express + 10€  1-2 days" label="Express Shipping - 10€ - 1-2 days" [(ngModel)]="selectedShipping">
           <ng-template pTemplate="label">
             <i class="pi pi-send"></i> Express Shipping - 10€ - 1-2 days
           </ng-template>
         </p-radioButton>
       </div>
       <div class="shipping-option">
-        <p-radioButton name="shipping" value="overnight" label="Overnight Shipping - 20€ - Next day" [(ngModel)]="selectedShipping">
+        <p-radioButton name="shipping" value="Overnight + 20€ Next day" label="Overnight Shipping - 20€ - Next day" [(ngModel)]="selectedShipping">
           <ng-template pTemplate="label">
             <i class="pi pi-plane"></i> Overnight Shipping - 20€ - Next day
           </ng-template>
@@ -101,23 +108,27 @@
       </div>
     </div>
     <div class="input-container">
-      <h3 class="step-subtitle">Payment Methods</h3>
+      <div class="subtitle-container">
+        <h3 class="pi pi-credit-card" style="padding: 0px; margin-bottom: 7px;"></h3>
+        <h3 class="step-subtitle">Payment Methods:</h3>
+        
+      </div>
       <div class="payment-option">
-        <p-radioButton name="payment" value="credit" label="Credit Card" [(ngModel)]="selectedPayment">
+        <p-radioButton name="payment" value="Credit Card" label="Credit Card" [(ngModel)]="selectedPayment">
           <ng-template pTemplate="label">
             <i class="pi pi-credit-card"></i> Credit Card
           </ng-template>
         </p-radioButton>
       </div>
       <div class="payment-option">
-        <p-radioButton name="payment" value="paypal" label="PayPal" [(ngModel)]="selectedPayment">
+        <p-radioButton name="payment" value="PayPal" label="PayPal" [(ngModel)]="selectedPayment">
           <ng-template pTemplate="label">
             <i class="pi pi-paypal"></i> PayPal
           </ng-template>
         </p-radioButton>
       </div>
       <div class="payment-option">
-        <p-radioButton name="payment" value="bank" label="Bank Transfer" [(ngModel)]="selectedPayment">
+        <p-radioButton name="payment" value="Bank Transfer" label="Bank Transfer" [(ngModel)]="selectedPayment">
           <ng-template pTemplate="label">
             <i class="pi pi-money-bill"></i> Bank Transfer
           </ng-template>
@@ -131,9 +142,10 @@
   </div>
 </div>
 
-<div *ngIf="activeIndex === 2" class="step-content">
+<div *ngIf="activeIndex === 2" class="step-content"  style="margin-top: 30px;">
   <div class="form-container">
     <h2 class="step-title">Summary</h2>
+    <p class="step-instruction" style="margin-bottom: 30px;">Review your order details below. <br> Ensure everything is correct before confirming your purchase.</p>
     <div class="cart-items">
       <div *ngFor="let item of cartItems" class="horizontal-card">
         <div class="card-img" (click)="navigateToProduct(item.id)" style="cursor: pointer;">
@@ -145,24 +157,29 @@
           <p class="card-text">Color: {{ getColorName(item.id, item.color) }}</p>
           <p class="card-text">Size: {{ item.size }}</p>
           <p class="card-text">Price: {{ getProductPrice(item.id) }} €</p>
-          <p class="card-text card-price">Total: {{ getItemTotalPrice(item) }} €</p>
           <p class="card-text">Quantity: {{ item.quantity }}</p>
+          <p class="card-text card-price">Total: {{ getItemTotalPrice(item) }} €</p>
         </div>
       </div>
     </div>
-    <div class="summary-details horizontal-card">
-      <p class="card-text"><strong>Address:</strong></p>
-      <p class="card-text">{{ addressForm.value.firstName }} {{ addressForm.value.lastName }}</p>
-      <p class="card-text">{{ addressForm.value.street }} {{ addressForm.value.streetNumber }}</p>
-      <p class="card-text">{{ addressForm.value.postalCode }} {{ addressForm.value.city }}</p>
-      <p class="card-text">{{ addressForm.value.country.name }}</p>
-      <p class="card-text"><strong>Shipping:</strong> <i class="pi pi-truck"></i> {{ selectedShipping }}</p>
-      <p class="card-text"><strong>Payment:</strong> <i class="pi pi-credit-card"></i> {{ selectedPayment }}</p>
-      <p class="card-text card-price"><strong>Total Price:</strong> {{ totalPrice | number:'1.2-2' }}€</p>
+  
+    <div class="summary-details horizontal-card centered-card">
+      <div class="summary-left" style="margin-left: 30px;">
+        <p class="card-text"><i class="pi pi-home" style="padding: 0px; margin-bottom: 5px; margin-right: 8px;"></i> <strong>Address:</strong></p>
+        <p class="card-text">{{ addressForm.value.firstName }} {{ addressForm.value.lastName }}</p>
+        <p class="card-text">{{ addressForm.value.street }} {{ addressForm.value.streetNumber }}</p>
+        <p class="card-text">{{ addressForm.value.postalCode }} {{ addressForm.value.city }}</p>
+        <p class="card-text">{{ addressForm.value.country.name }}</p>
+      </div>
+      <div class="summary-right" style="width: 250px; margin-right: 30px;">
+        <p class="card-text" style="width: 265px;"><i class="pi pi-truck" style="padding: 0px; margin-bottom: 5px; margin-right: 8px;"></i> <strong>Shipping:</strong> {{ selectedShipping }}</p>
+        <p class="card-text" style="width: 250px;"><i class="pi pi-credit-card" style="padding: 0px; margin-bottom: 5px; margin-right: 8px;"></i> <strong>Payment:</strong> {{ selectedPayment }}</p>
+        <p class="card-text card-price"><strong>Total Price:</strong> {{ totalPrice | number:'1.2-2' }}€</p>
+      </div>
     </div>
     <div class="button-container">
       <button pButton label="Back" icon="pi pi-arrow-left" (click)="prevStep()"></button>
-      <button pButton class="responsive-button" label="Confirm" icon="pi pi-check" (click)="confirmPurchase()"></button>
+      <button pButton class="responsive-button confirm-button" label="Confirm" icon="pi pi-check" (click)="confirmPurchase()"></button>
     </div>
   </div>
 </div>
