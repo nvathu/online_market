@@ -1,6 +1,10 @@
-<div class="filter-sidebar">
+<button  class="filter-toggle-button" (click)="toggleFilterVisibility()">
+  <i class="pi pi-filter"></i>
+</button>
+
+<div *ngIf="isFilterVisible" class="filter-sidebar">
   <h2>Filters</h2>
-  <div style="margin-top: 30px;">
+  <div class ="brand">
     <h3>Brands</h3>
     <div *ngFor="let brand of brands" class="field-checkbox">
       <p-checkbox 
@@ -15,7 +19,7 @@
       <label>{{ brand.label }}</label>
     </div>
   </div>
-  <div style="margin-top: 30px;">
+  <div class="color" >
     <h3>Colors</h3>
     <p-multiSelect 
       [options]="colors" 
@@ -25,7 +29,7 @@
       [filter]="true">
     </p-multiSelect>
   </div>
-  <div style="align-items: center; margin-top: 30px;">
+  <div  class="price">
     <h3>Price Range</h3>
     <p-slider 
       [(ngModel)]="rangeValues" 
@@ -34,6 +38,6 @@
       [range]="true" 
       (onSlideEnd)="applyFilters()">
     </p-slider>
-    <div style="margin-top: 15px;">{{ rangeValues[0] }} € - {{ rangeValues[1] }} €</div>
+    <div class ="range ">{{ rangeValues[0] }} € - {{ rangeValues[1] }} €</div>
   </div>
 </div>

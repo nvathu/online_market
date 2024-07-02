@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, HostListener  } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
 import { SliderModule } from 'primeng/slider';
@@ -21,6 +21,7 @@ export class FilterSidebarComponent {
   selectedBrands: string[] = [];
   selectedColors: string[] = [];
   rangeValues: number[] = [0, 1000]; // Array für den Slider
+  isFilterVisible: boolean = true;
   @Output() filtersChanged = new EventEmitter<{ brands: string[], colors: string[], priceRange: [number, number] }>();
 
   constructor(private productService: ProductService) { }
@@ -56,6 +57,19 @@ export class FilterSidebarComponent {
       array.splice(index, 1);
     }
     this.applyFilters();
+  }
+
+  toggleFilterVisibility() {
+    this.isFilterVisible = !this.isFilterVisible;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    this.isFilterVisible = window.innerWidth > 600;
   }
   
 }

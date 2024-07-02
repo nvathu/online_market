@@ -28,3 +28,48 @@
 .checkbox-container label {
   margin-left: 10px;
 }
+.price .brand .color{
+  margin-top: 30px;
+}
+.price{
+  align-items: center;
+}
+.range{
+  margin-top: 15px;
+}
+@media (max-width: 600px) {
+  .filter-sidebar {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .filter-sidebar h2, .filter-sidebar h3 {
+    font-size: 1.2em;
+  }
+
+  .filter-sidebar div {
+    margin-bottom: 15px;
+  }
+
+  .checkbox-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .checkbox-container label {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+
+  .filter-toggle-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+}
